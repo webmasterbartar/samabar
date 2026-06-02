@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>سما بار - حمل بار سریع، امن و هوشمند</title>
+	<link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<!-- Header -->
+	<header class="site-header" id="site-header">
+		<div class="site-header__topbar">
+			<div class="container site-header__topbar-inner">
+				<div class="site-header__topbar-info">
+					<a class="site-header__topbar-link" href="tel:02112345678">
+						<span class="material-symbols-outlined icon icon--sm">call</span>
+						۰۲۱-۱۲۳۴۵۶۷۸
+					</a>
+					<span class="site-header__topbar-divider" aria-hidden="true"></span>
+					<span class="site-header__topbar-text">
+						<span class="material-symbols-outlined icon icon--sm">support_agent</span>
+						پشتیبانی ۲۴ ساعته
+					</span>
+				</div>
+				<div class="site-header__topbar-actions">
+					<a class="site-header__topbar-link" href="#">پیگیری بار</a>
+					<a class="site-header__topbar-link" href="#">راهنمای ثبت سفارش</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="site-header__main">
+			<div class="container site-header__inner">
+				<a class="site-header__brand" href="#">
+					<img alt="لوگوی سما بار" class="site-header__logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVxPFKpxa-oit_M8ORyPPLhlwbvOSbAPkUYGCoPPD-ATgcVle1DtnAcu5VgdrMd_kHqTY1sTT6lyQuXbhhWWBF750hLz_ZCtJ0YR31g27ACCh-ao3wlSJQCc0wwDLU767_RJLOwfPhNWxufH-546ZlLJzSy_odif-tSiRnUCyWkDWyROaB9UfoKrdAJXHp6AF4xjjVZ-tjY1lXWE--INtdq_fuBILSSepRY8AdPJkkw4IwneAB9lIbtWyMRRi6qdTlsJXKjGdzXI">
+					<span class="site-header__brand-text">
+						<span class="site-header__title">سما بار</span>
+						<span class="site-header__tagline">حمل بار هوشمند</span>
+					</span>
+				</a>
+
+				<nav class="site-header__nav" aria-label="منوی اصلی">
+					<a class="site-header__nav-link site-header__nav-link--active" href="#">صفحه اصلی</a>
+					<div class="site-header__dropdown">
+						<button type="button" class="site-header__nav-link site-header__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+							خدمات
+							<span class="material-symbols-outlined icon icon--sm">expand_more</span>
+						</button>
+						<div class="site-header__dropdown-menu" role="menu">
+							<a class="site-header__dropdown-item" href="#" role="menuitem">
+								<span class="material-symbols-outlined icon">local_shipping</span>
+								حمل درون شهری
+							</a>
+							<a class="site-header__dropdown-item" href="#" role="menuitem">
+								<span class="material-symbols-outlined icon">directions_bus</span>
+								حمل برون شهری
+							</a>
+							<a class="site-header__dropdown-item" href="#" role="menuitem">
+								<span class="material-symbols-outlined icon">agriculture</span>
+								بارهای سنگین
+							</a>
+							<a class="site-header__dropdown-item" href="#" role="menuitem">
+								<span class="material-symbols-outlined icon">ac_unit</span>
+								بارهای ویژه
+							</a>
+						</div>
+					</div>
+					<a class="site-header__nav-link" href="#">قیمت‌ها</a>
+					<a class="site-header__nav-link" href="#">درباره ما</a>
+					<a class="site-header__nav-link" href="#">تماس با ما</a>
+				</nav>
+
+				<div class="site-header__actions">
+					<a class="site-header__phone" href="tel:02112345678" aria-label="تماس با پشتیبانی">
+						<span class="material-symbols-outlined icon">call</span>
+					</a>
+					<a class="btn btn--ghost btn--sm btn--desktop-only" href="#">ورود / ثبت‌نام</a>
+					<a class="btn btn--secondary btn--sm" href="#">ثبت سفارش</a>
+					<button type="button" class="site-header__menu-toggle" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-nav">
+						<span class="site-header__menu-icon" aria-hidden="true">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="site-header__overlay" id="header-overlay" hidden></div>
+
+		<aside class="site-header__mobile" id="mobile-nav" aria-hidden="true" aria-label="منوی موبایل">
+			<div class="site-header__mobile-head">
+				<span class="site-header__mobile-title">منو</span>
+				<button type="button" class="site-header__mobile-close" aria-label="بستن منو">
+					<span class="material-symbols-outlined icon">close</span>
+				</button>
+			</div>
+
+			<div class="site-header__mobile-body">
+				<nav class="site-header__mobile-nav">
+					<a class="site-header__mobile-link site-header__mobile-link--active" href="#">صفحه اصلی</a>
+					<a class="site-header__mobile-link" href="#">قیمت‌ها</a>
+					<a class="site-header__mobile-link" href="#">درباره ما</a>
+					<a class="site-header__mobile-link" href="#">تماس با ما</a>
+					<a class="site-header__mobile-link" href="#">همکاری با ما</a>
+				</nav>
+
+				<div class="site-header__mobile-group">
+					<span class="site-header__mobile-group-title">خدمات</span>
+					<div class="site-header__mobile-sub">
+						<a href="#">
+							<span class="material-symbols-outlined icon">local_shipping</span>
+							حمل درون شهری
+						</a>
+						<a href="#">
+							<span class="material-symbols-outlined icon">directions_bus</span>
+							حمل برون شهری
+						</a>
+						<a href="#">
+							<span class="material-symbols-outlined icon">agriculture</span>
+							بارهای سنگین
+						</a>
+						<a href="#">
+							<span class="material-symbols-outlined icon">ac_unit</span>
+							بارهای ویژه
+						</a>
+					</div>
+				</div>
+
+				<div class="site-header__mobile-contact">
+					<a class="site-header__mobile-contact-item" href="tel:02112345678">
+						<span class="material-symbols-outlined icon">call</span>
+						۰۲۱-۱۲۳۴۵۶۷۸
+					</a>
+					<a class="site-header__mobile-contact-item" href="#">
+						<span class="material-symbols-outlined icon">my_location</span>
+						پیگیری بار
+					</a>
+				</div>
+			</div>
+
+			<div class="site-header__mobile-foot">
+				<a class="btn btn--ghost btn--block-mobile" href="#">ورود / ثبت‌نام</a>
+				<a class="btn btn--secondary btn--block-mobile" href="#">ثبت سفارش</a>
+			</div>
+		</aside>
+	</header>
+
+	<!-- Hero -->
+	<section class="hero">
+		<div class="container hero__inner">
+		<span class="hero__badge">
+			<span class="hero__badge-dot" aria-hidden="true"></span>
+			بیش از ۱۲۰ هزار بار موفق
+		</span>
+		<h1 class="hero__title text-headline-xl">حمل بار سریع، امن و هوشمند در سراسر ایران</h1>
+		<p class="hero__subtitle text-body-lg">ثبت سفارش آنلاین، اتصال به بزرگترین ناوگان حمل‌ونقل و پیگیری لحظه‌ای محموله.</p>
+
+		<div class="hero__actions">
+			<button class="btn btn--secondary btn--lg btn--shadow" type="button">ثبت سفارش حمل بار</button>
+			<a class="btn btn--outline btn--lg" href="/mohasebe/">استعلام قیمت</a>
+		</div>
+
+		<form class="hero-form" action="#" method="get">
+			<div class="hero-form__field">
+				<label class="hero-form__label" for="hero-origin">مبدا</label>
+				<input class="hero-form__input" id="hero-origin" name="origin" placeholder="شهر یا آدرس مبدا" type="text">
+			</div>
+			<div class="hero-form__field">
+				<label class="hero-form__label" for="hero-destination">مقصد</label>
+				<input class="hero-form__input" id="hero-destination" name="destination" placeholder="شهر یا آدرس مقصد" type="text">
+			</div>
+			<div class="hero-form__field hero-form__field--select">
+				<label class="hero-form__label" for="hero-cargo">نوع بار</label>
+				<select class="hero-form__input hero-form__select" id="hero-cargo" name="cargo" required>
+					<option disabled selected value="">انتخاب کنید</option>
+					<option value="light">سبک</option>
+					<option value="heavy">سنگین</option>
+					<option value="refrigerated">یخچال‌دار</option>
+				</select>
+			</div>
+			<button class="btn btn--primary hero-form__submit" type="submit">ادامه</button>
+		</form>
+		</div>
+	</section>
+
+	<!-- Trust Stats -->
+	<section class="stats">
+		<div class="container stats__grid">
+			<div class="stats__item">
+				<span class="material-symbols-outlined stats__icon icon icon--lg icon--filled">task_alt</span>
+				<span class="stats__value" dir="ltr">+120,000</span>
+				<span class="stats__label">بار موفق</span>
+			</div>
+			<div class="stats__item">
+				<span class="material-symbols-outlined stats__icon icon icon--lg icon--filled">directions_car</span>
+				<span class="stats__value" dir="ltr">+5,000</span>
+				<span class="stats__label">راننده فعال</span>
+			</div>
+			<div class="stats__item">
+				<span class="material-symbols-outlined stats__icon icon icon--lg icon--filled">map</span>
+				<span class="stats__value">سراسر کشور</span>
+				<span class="stats__label">پوشش کامل</span>
+			</div>
+			<div class="stats__item">
+				<span class="material-symbols-outlined stats__icon icon icon--lg icon--filled">sentiment_satisfied</span>
+				<span class="stats__value" dir="ltr">98%</span>
+				<span class="stats__label">رضایت مشتری</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section class="section">
+		<div class="container">
+		<div class="section-header">
+			<h2 class="section-title">خدمات اصلی سما بار</h2>
+			<p class="section-subtitle">ارائه دهنده انواع خدمات حمل و نقل جاده‌ای متناسب با نیازهای شما</p>
+		</div>
+
+		<div class="services__grid">
+			<a class="card card--padded-sm card--hover service-card" href="/khadamat/">
+				<div class="service-card__icon-wrap">
+					<span class="material-symbols-outlined icon icon--md">local_shipping</span>
+				</div>
+				<h3 class="service-card__title text-headline-md">حمل درون شهری</h3>
+				<p class="service-card__text text-body-md">جابجایی سریع و ایمن بارهای شما در سطح شهر با وانت، نیسان و خاور.</p>
+			</a>
+			<a class="card card--padded-sm card--hover service-card" href="/khadamat/">
+				<div class="service-card__icon-wrap">
+					<span class="material-symbols-outlined icon icon--md">directions_bus</span>
+				</div>
+				<h3 class="service-card__title text-headline-md">حمل برون شهری</h3>
+				<p class="service-card__text text-body-md">ارسال بار به تمام نقاط کشور با کامیون، تریلی و ماشین‌های سنگین.</p>
+			</a>
+			<a class="card card--padded-sm card--hover service-card" href="/khadamat/">
+				<div class="service-card__icon-wrap">
+					<span class="material-symbols-outlined icon icon--md">agriculture</span>
+				</div>
+				<h3 class="service-card__title text-headline-md">بارهای سنگین</h3>
+				<p class="service-card__text text-body-md">حمل ماشین‌آلات و تجهیزات سنگین صنعتی با رعایت تمام اصول ایمنی.</p>
+			</a>
+			<a class="card card--padded-sm card--hover service-card" href="/khadamat/">
+				<div class="service-card__icon-wrap">
+					<span class="material-symbols-outlined icon icon--md">ac_unit</span>
+				</div>
+				<h3 class="service-card__title text-headline-md">بارهای ویژه</h3>
+				<p class="service-card__text text-body-md">حمل مواد فاسدشدنی و حساس با ماشین‌های یخچال‌دار و مخصوص.</p>
+			</a>
+		</div>
+
+		<div class="services__actions">
+			<a class="btn btn--outline" href="/khadamat/">مشاهده همه خدمات</a>
+		</div>
+		</div>
+	</section>
+
+	<!-- How it Works -->
+	<section class="section section--tint">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">سما بار چگونه کار می‌کند؟</h2>
+				<p class="section-subtitle">چهار مرحله ساده برای رساندن بار شما به مقصد</p>
+			</div>
+
+			<div class="steps">
+				<div class="step">
+					<div class="step__number">۱</div>
+					<h3 class="step__title text-headline-sm">ثبت سفارش</h3>
+					<p class="step__text">مشخصات بار و مبدا/مقصد را وارد کنید</p>
+				</div>
+				<div class="step">
+					<div class="step__number">۲</div>
+					<h3 class="step__title text-headline-sm">انتخاب راننده</h3>
+					<p class="step__text">نزدیک‌ترین و مناسب‌ترین راننده پیدا می‌شود</p>
+				</div>
+				<div class="step">
+					<div class="step__number">۳</div>
+					<h3 class="step__title text-headline-sm">بارگیری</h3>
+					<p class="step__text">راننده در محل حاضر شده و بارگیری انجام می‌شود</p>
+				</div>
+				<div class="step">
+					<div class="step__number">۴</div>
+					<h3 class="step__title text-headline-sm">تحویل و پرداخت</h3>
+					<p class="step__text">بار در مقصد تحویل داده شده و هزینه پرداخت می‌شود</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Advantages -->
+	<section class="section">
+		<div class="container advantages">
+		<div>
+			<h2 class="advantages__title text-headline-lg">چرا سما بار را انتخاب کنید؟</h2>
+			<div class="advantages__list">
+				<div class="advantage-item">
+					<span class="material-symbols-outlined advantage-item__icon icon">check_circle</span>
+					<div>
+						<h4 class="advantage-item__title text-headline-sm">قیمت‌گذاری شفاف</h4>
+						<p class="advantage-item__text text-body-md">بدون هزینه‌های پنهان، قیمت نهایی قبل از ثبت سفارش مشخص می‌شود.</p>
+					</div>
+				</div>
+				<div class="advantage-item">
+					<span class="material-symbols-outlined advantage-item__icon icon">support_agent</span>
+					<div>
+						<h4 class="advantage-item__title text-headline-sm">پشتیبانی ۲۴/۷</h4>
+						<p class="advantage-item__text text-body-md">تیم پشتیبانی ما در تمام ساعات شبانه‌روز پاسخگوی شماست.</p>
+					</div>
+				</div>
+				<div class="advantage-item">
+					<span class="material-symbols-outlined advantage-item__icon icon">my_location</span>
+					<div>
+						<h4 class="advantage-item__title text-headline-sm">پیگیری لحظه‌ای</h4>
+						<p class="advantage-item__text text-body-md">موقعیت دقیق بار خود را بر روی نقشه به صورت آنلاین مشاهده کنید.</p>
+					</div>
+				</div>
+				<div class="advantage-item">
+					<span class="material-symbols-outlined advantage-item__icon icon">shield</span>
+					<div>
+						<h4 class="advantage-item__title text-headline-sm">بیمه بار</h4>
+						<p class="advantage-item__text text-body-md">تمام بارهای ارسالی توسط سما بار دارای بیمه معتبر هستند.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="advantages__panel">
+			<div class="advantages__badges">
+				<div class="badge-card">
+					<span class="material-symbols-outlined badge-card__icon icon icon--lg">verified</span>
+					<span class="badge-card__title">رانندگان تایید شده</span>
+				</div>
+				<div class="badge-card">
+					<span class="material-symbols-outlined badge-card__icon icon icon--lg">speed</span>
+					<span class="badge-card__title">سرعت بالا</span>
+				</div>
+				<div class="badge-card">
+					<span class="material-symbols-outlined badge-card__icon icon icon--lg">payments</span>
+					<span class="badge-card__title">پرداخت امن</span>
+				</div>
+				<div class="badge-card">
+					<span class="material-symbols-outlined badge-card__icon icon icon--lg">handshake</span>
+					<span class="badge-card__title">تضمین کیفیت</span>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+		<div class="cta-section__inner">
+			<h2 class="cta-section__title">همین الان بار خود را ثبت کنید</h2>
+			<p class="cta-section__text">با وارد کردن شماره تماس، کارشناسان ما در سریع‌ترین زمان با شما تماس می‌گیرند.</p>
+			<form class="cta-section__form" action="#" method="get">
+				<input class="form-input form-input--ltr" placeholder="0912 345 6789" type="tel">
+				<button class="btn btn--secondary btn--nowrap" type="submit">ثبت درخواست</button>
+			</form>
+		</div>
+		</div>
+	</section>
+
+	<!-- Testimonials -->
+	<section class="section section--muted">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">نظرات مشتریان ما</h2>
+				<p class="section-subtitle">تجربه شرکت‌ها و افرادی که به سما بار اعتماد کرده‌اند</p>
+			</div>
+		</div>
+
+		<div class="testimonials-carousel">
+			<div class="testimonials-carousel__track">
+				<div class="testimonials-carousel__group">
+					<article class="card card--padded-md testimonial-card">
+						<div class="testimonial-card__stars">
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+						</div>
+						<p class="testimonial-card__quote text-body-md">"بسیار سریع و با قیمت مناسب. پشتیبانی عالی بود و بار ما بدون هیچ آسیبی به مقصد رسید."</p>
+						<div class="testimonial-card__author">
+							<div class="testimonial-card__avatar">م</div>
+							<div>
+								<div class="testimonial-card__name">محمد احمدی</div>
+								<div class="testimonial-card__role">مدیر فروش</div>
+							</div>
+						</div>
+					</article>
+					<article class="card card--padded-md testimonial-card">
+						<div class="testimonial-card__stars">
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+						</div>
+						<p class="testimonial-card__quote text-body-md">"برای شرکت ما که ارسال روزانه داریم، سما بار بهترین گزینه است. شفافیت در قیمت‌ها و پیگیری آنلاین واقعا کمک‌کننده است."</p>
+						<div class="testimonial-card__author">
+							<div class="testimonial-card__avatar">س</div>
+							<div>
+								<div class="testimonial-card__name">سارا رضایی</div>
+								<div class="testimonial-card__role">مدیر لجستیک</div>
+							</div>
+						</div>
+					</article>
+					<article class="card card--padded-md testimonial-card">
+						<div class="testimonial-card__stars">
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star</span>
+							<span class="material-symbols-outlined icon icon--filled">star_half</span>
+						</div>
+						<p class="testimonial-card__quote text-body-md">"راننده‌ها بسیار خوش‌برخورد و حرفه‌ای هستند. از بیمه بار هم استفاده کردیم که خیالمان را راحت کرد."</p>
+						<div class="testimonial-card__author">
+							<div class="testimonial-card__avatar">ع</div>
+							<div>
+								<div class="testimonial-card__name">علی کریمی</div>
+								<div class="testimonial-card__role">صاحب کسب‌وکار</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="section section--tint">
+		<div class="container container--narrow">
+			<div class="section-header">
+				<h2 class="section-title">سوالات متداول</h2>
+			</div>
+
+			<div class="faq__list">
+				<details class="card faq__item">
+					<summary>
+						<span>هزینه حمل بار چگونه محاسبه می‌شود؟</span>
+						<span class="material-symbols-outlined icon">expand_more</span>
+					</summary>
+					<p class="text-body-md">هزینه بر اساس مسافت، نوع ماشین، وزن بار و شرایط ویژه (مثل نیاز به کارگر یا بیمه اضافی) محاسبه می‌شود. قیمت اعلام شده نهایی بوده و تغییر نمی‌کند.</p>
+				</details>
+				<details class="card faq__item">
+					<summary>
+						<span>آیا بارهای ارسالی بیمه می‌شوند؟</span>
+						<span class="material-symbols-outlined icon">expand_more</span>
+					</summary>
+					<p class="text-body-md">بله، تمامی بارهای ارسالی توسط سما بار تا سقف مشخصی به صورت پایه بیمه هستند. برای بارهای با ارزش بالا، امکان افزایش سقف بیمه وجود دارد.</p>
+				</details>
+				<details class="card faq__item">
+					<summary>
+						<span>چقدر زمان می‌برد تا راننده به مبدا برسد؟</span>
+						<span class="material-symbols-outlined icon">expand_more</span>
+					</summary>
+					<p class="text-body-md">بسته به زمان ثبت سفارش و نوع ماشین درخواستی، معمولا بین ۳۰ تا ۹۰ دقیقه زمان می‌برد تا راننده در محل حاضر شود.</p>
+				</details>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="site-footer__cta">
+			<div class="container site-footer__cta-inner">
+				<div>
+					<h2 class="site-footer__cta-title">نیاز به راهنمایی دارید؟</h2>
+					<p class="site-footer__cta-text">کارشناسان ما در تمام ساعات شبانه‌روز آماده پاسخگویی هستند</p>
+				</div>
+				<div class="site-footer__cta-actions">
+					<a class="site-footer__cta-btn" href="tel:02112345678">
+						<span class="material-symbols-outlined icon icon--sm">call</span>
+						تماس با پشتیبانی
+					</a>
+					<a class="site-footer__cta-btn site-footer__cta-btn--outline" href="#">
+						ثبت سفارش آنلاین
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="site-footer__main">
+			<div class="container">
+				<div class="site-footer__grid">
+					<div class="site-footer__brand">
+						<a class="site-footer__brand-link" href="#">
+							<img alt="لوگوی سما بار" class="site-footer__logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVxPFKpxa-oit_M8ORyPPLhlwbvOSbAPkUYGCoPPD-ATgcVle1DtnAcu5VgdrMd_kHqTY1sTT6lyQuXbhhWWBF750hLz_ZCtJ0YR31g27ACCh-ao3wlSJQCc0wwDLU767_RJLOwfPhNWxufH-546ZlLJzSy_odif-tSiRnUCyWkDWyROaB9UfoKrdAJXHp6AF4xjjVZ-tjY1lXWE--INtdq_fuBILSSepRY8AdPJkkw4IwneAB9lIbtWyMRRi6qdTlsJXKjGdzXI">
+							<span class="site-footer__brand-name">سما بار</span>
+						</a>
+						<p class="site-footer__description">
+							ارائه‌دهنده راهکارهای هوشمند حمل و نقل جاده‌ای در سراسر کشور. ثبت سفارش آنلاین، پیگیری لحظه‌ای و بیمه بار.
+						</p>
+						<div class="site-footer__social">
+							<a class="site-footer__social-link" href="#" aria-label="اینستاگرام"><span class="material-symbols-outlined icon">photo_camera</span></a>
+							<a class="site-footer__social-link" href="#" aria-label="تلگرام"><span class="material-symbols-outlined icon">send</span></a>
+							<a class="site-footer__social-link" href="#" aria-label="لینکدین"><span class="material-symbols-outlined icon">work</span></a>
+							<a class="site-footer__social-link" href="#" aria-label="واتساپ"><span class="material-symbols-outlined icon">chat</span></a>
+						</div>
+						<div class="site-footer__trust">
+							<span class="site-footer__trust-item">
+								<span class="material-symbols-outlined icon">verified</span>
+								مجوز رسمی
+							</span>
+							<span class="site-footer__trust-item">
+								<span class="material-symbols-outlined icon">shield</span>
+								بیمه بار
+							</span>
+						</div>
+					</div>
+
+					<details class="site-footer__accordion site-footer__column">
+						<summary>
+							<span>دسترسی سریع</span>
+							<span class="material-symbols-outlined icon">expand_more</span>
+						</summary>
+						<nav class="site-footer__links">
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>صفحه اصلی</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>خدمات</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>استعلام قیمت</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>پیگیری بار</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>درباره ما</a>
+						</nav>
+					</details>
+
+					<details class="site-footer__accordion site-footer__column">
+						<summary>
+							<span>خدمات و پشتیبانی</span>
+							<span class="material-symbols-outlined icon">expand_more</span>
+						</summary>
+						<nav class="site-footer__links">
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>حمل درون شهری</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>حمل برون شهری</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>سوالات متداول</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>ثبت شکایات</a>
+							<a class="site-footer__link" href="#"><span class="material-symbols-outlined icon">chevron_left</span>همکاری با رانندگان</a>
+						</nav>
+					</details>
+
+					<div class="site-footer__column">
+						<h3 class="site-footer__column-title">تماس با ما</h3>
+						<ul class="site-footer__contact-list">
+							<li class="site-footer__contact-item">
+								<span class="site-footer__contact-icon"><span class="material-symbols-outlined icon">location_on</span></span>
+								<div class="site-footer__contact-body">
+									<span class="site-footer__contact-label">آدرس</span>
+									<span class="site-footer__contact-value">تهران، خیابان ولیعصر، پلاک ۱۲۳۴</span>
+								</div>
+							</li>
+							<li class="site-footer__contact-item">
+								<span class="site-footer__contact-icon"><span class="material-symbols-outlined icon">call</span></span>
+								<div class="site-footer__contact-body">
+									<span class="site-footer__contact-label">تلفن پشتیبانی</span>
+									<a class="site-footer__contact-value" href="tel:02112345678" dir="ltr">۰۲۱-۱۲۳۴۵۶۷۸</a>
+								</div>
+							</li>
+							<li class="site-footer__contact-item">
+								<span class="site-footer__contact-icon"><span class="material-symbols-outlined icon">mail</span></span>
+								<div class="site-footer__contact-body">
+									<span class="site-footer__contact-label">ایمیل</span>
+									<a class="site-footer__contact-value" href="mailto:info@samaabar.ir" dir="ltr">info@samaabar.ir</a>
+								</div>
+							</li>
+							<li class="site-footer__contact-item">
+								<span class="site-footer__contact-icon"><span class="material-symbols-outlined icon">schedule</span></span>
+								<div class="site-footer__contact-body">
+									<span class="site-footer__contact-label">ساعات پاسخگویی</span>
+									<span class="site-footer__contact-value">۲۴ ساعته، ۷ روز هفته</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="site-footer__newsletter">
+					<div class="site-footer__newsletter-inner">
+						<div class="site-footer__newsletter-text">
+							<h3 class="site-footer__newsletter-title">عضویت در خبرنامه</h3>
+							<p class="site-footer__newsletter-desc">از تخفیف‌ها، اخبار و راهنماهای حمل بار باخبر شوید</p>
+						</div>
+						<form class="site-footer__newsletter-form" action="#" method="post">
+							<input class="site-footer__newsletter-input" type="email" placeholder="ایمیل خود را وارد کنید" required>
+							<button class="site-footer__newsletter-btn" type="submit">
+								<span class="material-symbols-outlined icon icon--sm">send</span>
+								عضویت
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<div class="container site-footer__bottom-inner">
+				<p class="site-footer__copyright">© ۱۴۰۴ سما بار — تمامی حقوق محفوظ است.</p>
+				<nav class="site-footer__legal" aria-label="لینک‌های قانونی">
+					<a class="site-footer__legal-link" href="#">حریم خصوصی</a>
+					<a class="site-footer__legal-link" href="#">قوانین و مقررات</a>
+					<a class="site-footer__legal-link" href="#">نقشه سایت</a>
+				</nav>
+				<div class="site-footer__badges">
+					<div class="site-footer__badge">نماد<br>اعتماد</div>
+					<div class="site-footer__badge">اتحادیه<br>حمل‌ونقل</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<button type="button" class="site-footer__back-top" id="back-to-top" aria-label="بازگشت به بالا">
+		<span class="material-symbols-outlined icon">keyboard_arrow_up</span>
+	</button>
+
+	<script src="../assets/js/header.js"></script>
+	<script src="../assets/js/footer.js"></script>
+	<script src="../assets/js/testimonials.js"></script>
+</body>
+</html>

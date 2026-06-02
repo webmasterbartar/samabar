@@ -1,0 +1,15 @@
+{
+  "name": "samabar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node scripts/test-site.js && node scripts/e2e-browser.js",
+    "test:site": "node scripts/test-site.js",
+    "test:e2e": "node scripts/e2e-browser.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

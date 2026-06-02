@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f0f3ff",
+                        "on-secondary-fixed": "#410007",
+                        "surface-tint": "#3a5f94",
+                        "on-background": "#001b3c",
+                        "on-tertiary-fixed-variant": "#404940",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d5e3ff",
+                        "primary-container": "#003366",
+                        "on-error": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "tertiary-fixed": "#dce5d9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#a7c8ff",
+                        "on-tertiary-fixed": "#161d16",
+                        "on-tertiary-container": "#959e93",
+                        "on-secondary-container": "#fffbff",
+                        "primary": "#001e40",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-surface": "#183153",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-primary-container": "#799dd6",
+                        "tertiary-fixed-dim": "#c0c9be",
+                        "surface-container": "#e7eeff",
+                        "secondary-container": "#db313f",
+                        "tertiary": "#182019",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#2d352d",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "background": "#f9f9ff",
+                        "outline-variant": "#c3c6d1",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "surface-container-high": "#dee8ff",
+                        "surface-container-highest": "#d5e3ff",
+                        "on-surface": "#001b3c",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#c8dbff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#43474f",
+                        "secondary": "#b7102a",
+                        "primary-fixed": "#d5e3ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad8",
+                        "inverse-on-surface": "#ecf1ff",
+                        "outline": "#737780"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Vazirmatn"],
+                        "label-sm": ["Vazirmatn"],
+                        "body-md": ["Vazirmatn"],
+                        "body-lg": ["Vazirmatn"],
+                        "headline-md": ["Vazirmatn"],
+                        "headline-xl": ["Vazirmatn"],
+                        "label-md": ["Vazirmatn"],
+                        "headline-lg-mobile": ["Vazirmatn"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="text-on-background bg-background">
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full w-64 bg-surface border-l border-outline-variant flex flex-col p-md gap-base z-50">
+<div class="flex flex-col items-center mb-lg gap-xs">
+<span class="font-headline-sm text-headline-sm font-black text-secondary">سما بار</span>
+<span class="font-label-md text-label-md text-on-surface-variant">مدیریت لجستیک هوشمند</span>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 bg-surface-container-high text-primary rounded-lg px-4 py-3 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">داشبورد</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md text-label-md">سفارش‌های فعال</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">تاریخچه</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">رهگیری</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">پرداخت‌ها</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">پروفایل</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">پشتیبانی</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">تنظیمات</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">خروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="mr-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm px-gutter py-sm">
+<div class="max-w-[1280px] mx-auto flex justify-between items-center">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">خوش‌آمدید، شرکت فولاد گستر</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer" data-icon="account_circle">account_circle</button>
+<button class="material-symbols-outlined text-error hover:opacity-80 transition-opacity cursor-pointer" data-icon="logout">logout</button>
+</div>
+</div>
+</header>
+<div class="p-lg max-w-[1280px] mx-auto flex flex-col gap-lg">
+<!-- Quick Actions -->
+<section class="flex flex-wrap gap-md">
+<button class="bg-secondary text-on-secondary px-lg py-sm rounded-lg font-headline-md flex items-center gap-2 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    ثبت سفارش جدید
+                </button>
+<button class="border-2 border-primary text-primary px-lg py-sm rounded-lg font-headline-md flex items-center gap-2 hover:bg-primary hover:text-white transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+                    محاسبه قیمت
+                </button>
+<button class="border-2 border-outline text-on-surface-variant px-lg py-sm rounded-lg font-headline-md flex items-center gap-2 hover:bg-surface-container-low transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+                    پشتیبانی
+                </button>
+</section>
+<!-- Summary Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm flex flex-col gap-base">
+<span class="text-on-surface-variant font-label-md">سفارش‌های فعال</span>
+<span class="text-headline-lg font-headline-lg text-primary">۵</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm flex flex-col gap-base">
+<span class="text-on-surface-variant font-label-md">تکمیل شده</span>
+<span class="text-headline-lg font-headline-lg text-primary">۱۲۸</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm flex flex-col gap-base">
+<span class="text-on-surface-variant font-label-md">هزینه ماه جاری</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-headline-lg font-headline-lg text-primary">۴۵,۰۰۰,۰۰۰</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">تومان</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm flex flex-col gap-base">
+<span class="text-on-surface-variant font-label-md">میانگین زمان تحویل</span>
+<span class="text-headline-lg font-headline-lg text-primary">۲.۴ روز</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Active Orders (Main Column) -->
+<div class="lg:col-span-2 flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">سفارش‌های فعال</h2>
+<a class="text-primary font-label-md hover:underline" href="#">مشاهده همه</a>
+</div>
+<!-- Modern Order Cards -->
+<div class="flex flex-col gap-sm">
+<!-- Order 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col md:flex-row justify-between items-center gap-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-xs w-full md:w-auto">
+<span class="font-label-sm text-outline">SB-1234</span>
+<div class="flex items-center gap-sm">
+<span class="font-body-lg font-bold">تهران</span>
+<span class="material-symbols-outlined text-outline" data-icon="trending_flat">trending_flat</span>
+<span class="font-body-lg font-bold">اصفهان</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-label-sm font-bold">در مسیر</span>
+<span class="text-label-sm text-on-surface-variant">رسیدن: فردا، ۱۰:۰۰</span>
+</div>
+<button class="bg-primary text-white px-lg py-2 rounded-lg font-label-md hover:bg-primary-container transition-colors w-full md:w-auto">پیگیری</button>
+</div>
+<!-- Order 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col md:flex-row justify-between items-center gap-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-xs w-full md:w-auto">
+<span class="font-label-sm text-outline">SB-1235</span>
+<div class="flex items-center gap-sm">
+<span class="font-body-lg font-bold">بندرعباس</span>
+<span class="material-symbols-outlined text-outline" data-icon="trending_flat">trending_flat</span>
+<span class="font-body-lg font-bold">مشهد</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-label-sm font-bold">بارگیری</span>
+<span class="text-label-sm text-on-surface-variant">رسیدن: ۵ آذر</span>
+</div>
+<button class="bg-primary text-white px-lg py-2 rounded-lg font-label-md hover:bg-primary-container transition-colors w-full md:w-auto">پیگیری</button>
+</div>
+</div>
+</div>
+<!-- Side Column: Live Status & Tracking -->
+<div class="flex flex-col gap-lg">
+<!-- Live Status Preview -->
+<div class="bg-primary text-white p-md rounded-xl shadow-lg flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-label-sm opacity-80">آخرین وضعیت محموله</span>
+<span class="font-headline-sm">SB-1234</span>
+</div>
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</div>
+<div class="mt-base">
+<div class="flex justify-between text-label-sm mb-xs">
+<span>تهران</span>
+<span>اصفهان</span>
+</div>
+<div class="w-full bg-white/20 h-2 rounded-full relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-white w-2/3"></div>
+</div>
+<div class="flex justify-center mt-sm text-label-sm">
+<span>محدوده قم - ۶۵٪ طی شده</span>
+</div>
+</div>
+</div>
+<!-- Map Preview Placeholder -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm h-64 relative">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="A clean, minimalist vector map of Iran showing a highway connecting Tehran and Isfahan. The map is designed in a light-mode corporate aesthetic with subtle gray and navy blue lines. A glowing blue truck icon is positioned halfway between the two cities on a highway. The lighting is bright and even, emphasizing clarity and logistical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD02VLO1msMJx-Sz0YQhNl0UtfXtHknxM_ZhexiTCeb63H50A7EmI8yTumDMCAfViKFgP2PWFL735e-G_GBP1Wdn9upfQpVbWl7obk7o6PBMuy7JJvEPv3_KwIdPRfP2HxTerzf_TkmtmXsMIX59iN2VrPOkRSoYGdPISitOkO6z2lA3vC1Od0QIMHjhH_h9dxAMENIi-7o1LElAHVFrwe4l8hjwSVsZSk2_PNXTs-2TSBSKY7sn8lwtPJToFdDLtmATFtxG2YDpDQ"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-white/80 backdrop-blur-md px-md py-sm rounded-lg border border-outline-variant">
+<span class="font-label-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="location_searching">location_searching</span>
+                                    مشاهده نقشه زنده
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

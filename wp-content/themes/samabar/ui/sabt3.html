@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sama Bar - Order Flow - Step 3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#a7c8ff",
+                        "on-tertiary-container": "#959e93",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary": "#182019",
+                        "primary": "#001e40",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#c8dbff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dee8ff",
+                        "secondary-container": "#db313f",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#183153",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-fixed-dim": "#c0c9be",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "secondary": "#b7102a",
+                        "on-primary-container": "#799dd6",
+                        "surface-variant": "#d5e3ff",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#c3c6d1",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-tertiary-fixed": "#161d16",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "background": "#f9f9ff",
+                        "outline": "#737780",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#001b3c",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-highest": "#d5e3ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#410007",
+                        "primary-container": "#003366",
+                        "on-surface": "#001b3c",
+                        "on-tertiary-fixed-variant": "#404940",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#dce5d9",
+                        "tertiary-container": "#2d352d",
+                        "secondary-fixed": "#ffdad8",
+                        "primary-fixed": "#d5e3ff",
+                        "on-surface-variant": "#43474f",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "surface-tint": "#3a5f94"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "margin": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Vazirmatn"],
+                        "label-sm": ["Vazirmatn"],
+                        "headline-xl": ["Vazirmatn"],
+                        "body-md": ["Vazirmatn"],
+                        "label-md": ["Vazirmatn"],
+                        "headline-lg": ["Vazirmatn"],
+                        "headline-md": ["Vazirmatn"],
+                        "body-lg": ["Vazirmatn"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation (Transactional Simplified) -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center px-margin h-16 w-full max-w-full z-50 sticky top-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sama Bar</span>
+</div>
+<div class="flex items-center gap-md hidden md:flex">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-md">
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs">1</span>
+<span>مبدا و مقصد</span>
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-md">
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs">2</span>
+<span>جزئیات محموله</span>
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</div>
+<div class="flex items-center gap-xs text-primary font-bold font-label-md">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs">3</span>
+<span>انتخاب سرویس و تایید نهایی</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md">
+            انصراف
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[1280px] mx-auto px-margin py-xl grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Service Selection -->
+<section class="lg:col-span-8 flex flex-col gap-md">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-sm">انتخاب سرویس ارسال</h1>
+<!-- Smart Recommendation Card -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-md border-l-4 border-secondary relative overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary px-sm py-xs rounded-bl-lg font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    پیشنهاد هوشمند
+                </div>
+<div class="flex justify-between items-start mt-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-primary-container mb-xs">سرویس سازمانی (Corporate)</h2>
+<p class="font-body-md text-surface-container-high mb-sm">بهترین تناسب برای محموله‌های صنعتی با نیاز به رهگیری دقیق و بیمه کامل.</p>
+<div class="flex gap-sm">
+<span class="flex items-center gap-xs font-label-md text-surface-dim bg-inverse-surface/20 px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                                تحویل در ۲ روز کاری
+                            </span>
+<span class="flex items-center gap-xs font-label-md text-surface-dim bg-inverse-surface/20 px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                                بیمه کامل محموله
+                            </span>
+</div>
+</div>
+<div class="text-left">
+<div class="font-body-md text-surface-dim line-through">۴۵,۰۰۰,۰۰۰ ﷼</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-primary-container">۴۲,۵۰۰,۰۰۰ <span class="text-label-md font-normal">﷼</span></div>
+</div>
+</div>
+<div class="mt-md border-t border-surface-container/20 pt-sm flex justify-end">
+<label class="flex items-center gap-sm cursor-pointer">
+<span class="font-label-md text-on-primary-container font-bold">انتخاب شده</span>
+<input checked="" class="w-5 h-5 text-secondary bg-surface-container border-outline-variant focus:ring-secondary focus:ring-2 rounded-full form-radio" name="service_selection" type="radio"/>
+</label>
+</div>
+</div>
+<!-- Other Service Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<!-- Express Service -->
+<div class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md hover:border-primary transition-all relative cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">سرویس اکسپرس (Express)</h3>
+<label class="cursor-pointer">
+<input class="w-5 h-5 text-secondary bg-surface border-outline-variant focus:ring-secondary focus:ring-2 rounded-full form-radio" name="service_selection" type="radio"/>
+</label>
+</div>
+<p class="font-body-md text-on-surface-variant mb-md">سریع‌ترین روش ارسال برای محموله‌های حساس به زمان. اولویت بالا در بارگیری.</p>
+<div class="flex justify-between items-end mt-auto">
+<div class="flex flex-col gap-xs">
+<span class="flex items-center gap-xs font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                                تحویل ۱ روزه
+                            </span>
+</div>
+<div class="text-left">
+<div class="font-headline-md text-headline-md font-bold text-primary">۵۵,۰۰۰,۰۰۰ <span class="text-label-sm font-normal">﷼</span></div>
+</div>
+</div>
+</div>
+<!-- Intercity Service -->
+<div class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md hover:border-primary transition-all relative cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">بین شهری عادی</h3>
+<label class="cursor-pointer">
+<input class="w-5 h-5 text-secondary bg-surface border-outline-variant focus:ring-secondary focus:ring-2 rounded-full form-radio" name="service_selection" type="radio"/>
+</label>
+</div>
+<p class="font-body-md text-on-surface-variant mb-md">مقرون‌به‌صرفه‌ترین گزینه برای ارسال بارهای استاندارد بدون محدودیت زمانی سختگیرانه.</p>
+<div class="flex justify-between items-end mt-auto">
+<div class="flex flex-col gap-xs">
+<span class="flex items-center gap-xs font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                                تحویل ۳-۴ روز کاری
+                            </span>
+</div>
+<div class="text-left">
+<div class="font-headline-md text-headline-md font-bold text-primary">۳۰,۰۰۰,۰۰۰ <span class="text-label-sm font-normal">﷼</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Final Review & Checkout -->
+<aside class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface rounded-xl border border-outline-variant shadow-sm sticky top-24">
+<div class="p-md border-b border-outline-variant bg-surface-container-low rounded-t-xl">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">مرور نهایی سفارش</h2>
+</div>
+<div class="p-md flex flex-col gap-md">
+<!-- Route Summary -->
+<div class="flex gap-sm items-center">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-0.5 h-8 bg-outline-variant border-dashed border-l-2"></div>
+<div class="w-3 h-3 rounded-full border-2 border-secondary bg-surface"></div>
+</div>
+<div class="flex flex-col gap-md flex-1">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">مبدا</div>
+<div class="font-body-md font-bold text-on-surface">تهران، شهرک صنعتی شمس آباد</div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">مقصد</div>
+<div class="font-body-md font-bold text-on-surface">اصفهان، شهرک صنعتی محمودآباد</div>
+</div>
+</div>
+</div>
+<div class="w-full h-px bg-outline-variant"></div>
+<!-- Cargo Details -->
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">نوع محموله</span>
+<span class="font-body-md font-bold text-on-surface">قطعات صنعتی (۲ تن)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">سرویس انتخابی</span>
+<span class="font-body-md font-bold text-primary bg-surface-container-high px-sm py-xs rounded-lg">سازمانی (Corporate)</span>
+</div>
+<div class="w-full h-px bg-outline-variant"></div>
+<!-- Pricing Breakdown -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>هزینه پایه حمل</span>
+<span>۴۰,۰۰۰,۰۰۰ ﷼</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>بیمه محموله</span>
+<span>۲,۵۰۰,۰۰۰ ﷼</span>
+</div>
+<div class="flex justify-between items-center text-secondary font-body-md">
+<span>تخفیف مشتری شرکتی</span>
+<span>-۰ ﷼</span>
+</div>
+</div>
+<!-- Final Total -->
+<div class="bg-surface-container-low p-sm rounded-lg flex justify-between items-center mt-sm border border-outline-variant">
+<span class="font-headline-md text-headline-md font-bold text-primary">مبلغ قابل پرداخت</span>
+<span class="font-headline-lg text-headline-lg font-bold text-primary">۴۲,۵۰۰,۰۰۰ <span class="text-label-md font-normal">﷼</span></span>
+</div>
+<!-- CTA -->
+<button class="w-full bg-secondary hover:bg-secondary/90 text-on-secondary font-headline-md text-headline-md py-sm rounded-lg transition-colors shadow-sm flex justify-center items-center gap-xs mt-sm">
+                        تایید و ثبت سفارش
+                        <span class="material-symbols-outlined">check_circle</span>
+</button>
+<!-- Trust Badges -->
+<div class="flex justify-center gap-md mt-sm">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[24px]">shield</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">بیمه بار</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[24px]">support_agent</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">پشتیبانی ۲۴/۷</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[24px]">cancel</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">لغو آسان</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

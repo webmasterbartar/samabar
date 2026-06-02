@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>سوالات متداول - سما بار</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c0c9be",
+                        "inverse-primary": "#a7c8ff",
+                        "on-primary-container": "#799dd6",
+                        "secondary-fixed": "#ffdad8",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#43474f",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed": "#410007",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#183153",
+                        "surface-tint": "#3a5f94",
+                        "primary-container": "#003366",
+                        "inverse-on-surface": "#ecf1ff",
+                        "primary": "#001e40",
+                        "on-surface": "#001b3c",
+                        "surface-dim": "#c8dbff",
+                        "surface-container": "#e7eeff",
+                        "on-primary-fixed": "#001b3c",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#dce5d9",
+                        "secondary": "#b7102a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-container": "#db313f",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#001b3c",
+                        "error": "#ba1a1a",
+                        "tertiary": "#182019",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "on-tertiary-container": "#959e93",
+                        "tertiary-container": "#2d352d",
+                        "on-tertiary-fixed": "#161d16",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "outline": "#737780",
+                        "on-tertiary-fixed-variant": "#404940",
+                        "primary-fixed": "#d5e3ff",
+                        "surface": "#f9f9ff",
+                        "surface-container-highest": "#d5e3ff",
+                        "surface-variant": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dee8ff",
+                        "outline-variant": "#c3c6d1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Vazirmatn"],
+                        "headline-lg-mobile": ["Vazirmatn"],
+                        "label-md": ["Vazirmatn"],
+                        "body-lg": ["Vazirmatn"],
+                        "label-sm": ["Vazirmatn"],
+                        "headline-xl": ["Vazirmatn"],
+                        "headline-lg": ["Vazirmatn"],
+                        "body-md": ["Vazirmatn"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-xl": ["40px", { "lineHeight": "52px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Vazirmatn', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/95 dark:bg-primary/95 backdrop-blur-md shadow-sm border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-margin py-sm w-full">
+<div class="flex items-center gap-md">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">سما بار</a>
+<div class="hidden md:flex items-center gap-sm">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-primary-container/50 transition-all duration-300 px-3 py-2 rounded" href="#">خدمات</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-primary-container/50 transition-all duration-300 px-3 py-2 rounded" href="#">قیمت‌ها</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-primary-container/50 transition-all duration-300 px-3 py-2 rounded" href="#">درباره ما</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-primary-container/50 transition-all duration-300 px-3 py-2 rounded" href="#">همکاری</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden md:block text-primary font-label-md text-label-md border border-primary px-4 py-2 rounded-lg hover:bg-primary-container/10 transition-colors">ورود / ثبت‌نام</button>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg font-bold hover:bg-secondary-container transition-colors shadow-sm">ثبت سفارش</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="bg-primary-container text-on-primary-container py-xl relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8ed7c80a71?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center" data-alt="A modern, high-tech logistics warehouse interior with blurred shelves and activity, creating an abstract, tech-forward background pattern in deep blue tones."></div>
+<div class="max-w-7xl mx-auto px-margin relative z-10 text-center">
+<h1 class="font-headline-xl text-headline-xl text-on-primary mb-md">سوالات متداول</h1>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim max-w-2xl mx-auto mb-lg">پاسخ پرسش‌های خود را درباره خدمات حمل و نقل، قیمت‌گذاری و روند کار سما بار بیابید.</p>
+<!-- Search Bar -->
+<div class="max-w-xl mx-auto relative">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-4 pr-12 py-4 rounded-xl border border-outline-variant bg-surface text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm font-body-md text-body-md" placeholder="جستجو در سوالات..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="py-lg bg-surface-container-low border-b border-outline-variant">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-sm md:gap-gutter">
+<!-- Category Card 1 (Active) -->
+<div class="bg-surface border-2 border-primary rounded-xl p-sm md:p-md text-center cursor-pointer shadow-[0_8px_24px_rgba(0,30,64,0.1)] hover:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined text-[32px] text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<h3 class="font-label-md text-label-md text-primary font-bold">سفارش و ثبت</h3>
+</div>
+<!-- Category Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-sm md:p-md text-center cursor-pointer hover:shadow-sm hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-[32px] text-outline mb-xs">payments</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">قیمت‌ها</h3>
+</div>
+<!-- Category Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-sm md:p-md text-center cursor-pointer hover:shadow-sm hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-[32px] text-outline mb-xs">verified_user</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">بیمه و امنیت</h3>
+</div>
+<!-- Category Card 4 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-sm md:p-md text-center cursor-pointer hover:shadow-sm hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-[32px] text-outline mb-xs">share_location</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">پیگیری بار</h3>
+</div>
+<!-- Category Card 5 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-sm md:p-md text-center cursor-pointer hover:shadow-sm hover:border-primary/50 transition-all col-span-2 md:col-span-1">
+<span class="material-symbols-outlined text-[32px] text-outline mb-xs">badge</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">رانندگان</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Content (Bento Grid Style Layout) -->
+<section class="py-xl max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar / Title -->
+<div class="lg:col-span-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">سفارش و ثبت</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">مراحل و قوانین مربوط به ثبت سفارش حمل بار در سیستم یکپارچه سما بار.</p>
+<div class="bg-surface-container p-md rounded-xl border border-outline-variant">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">نیاز به راهنمایی بیشتر دارید؟</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-sm">پشتیبانی ما ۲۴ ساعته پاسخگوی شماست.</p>
+<button class="w-full bg-surface border border-primary text-primary font-label-md text-label-md py-2 rounded-lg hover:bg-primary-container/5 transition-colors">تماس با پشتیبانی</button>
+</div>
+</div>
+<!-- Accordion List -->
+<div class="lg:col-span-8 flex flex-col gap-sm">
+<!-- Item 1 (Expanded) -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-md bg-surface-container-lowest flex justify-between items-center cursor-pointer">
+<h3 class="font-headline-md text-headline-md text-primary">چگونه می‌توانم یک سفارش حمل بار ثبت کنم؟</h3>
+<span class="material-symbols-outlined text-primary">expand_less</span>
+</div>
+<div class="p-md pt-0 border-t border-outline-variant/50">
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm leading-relaxed">
+                                برای ثبت سفارش، ابتدا باید در پنل کاربری سما بار ثبت‌نام کنید. پس از ورود، از داشبورد گزینه "ثبت سفارش جدید" را انتخاب کرده، مبدا، مقصد، نوع بار و زمان مورد نظر را وارد نمایید. سیستم بلافاصله برآورد هزینه را به شما نمایش می‌دهد.
+                            </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-primary/30 transition-colors">
+<div class="p-md flex justify-between items-center cursor-pointer">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">آیا امکان لغو سفارش پس از ثبت نهایی وجود دارد؟</h3>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-primary/30 transition-colors">
+<div class="p-md flex justify-between items-center cursor-pointer">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">چه نوع بارهایی توسط سما بار حمل می‌شوند؟</h3>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-primary/30 transition-colors">
+<div class="p-md flex justify-between items-center cursor-pointer">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">محدودیت وزنی یا حجمی برای بارها چگونه محاسبه می‌شود؟</h3>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-primary dark:bg-primary-container border-t border-primary-container dark:border-outline-variant">
+<div class="max-w-7xl mx-auto px-margin py-xl grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-sm">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary">سما بار</span>
+<p class="font-body-md text-body-md text-primary-fixed-dim">
+                    © ۱۴۰۲ تمامی حقوق برای سما بار محفوظ است. عضو رسمی اتحادیه حمل و نقل.
+                </p>
+</div>
+<div class="col-span-1 flex flex-col gap-xs">
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary transition-colors hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">تماس با ما</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary transition-colors hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">حریم خصوصی</a>
+</div>
+<div class="col-span-1 flex flex-col gap-xs">
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary transition-colors hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">نقشه سایت</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary transition-colors hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">سوالات متداول</a>
+</div>
+<div class="col-span-1 flex flex-col gap-xs">
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary transition-colors hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">فرصت‌های شغلی</a>
+</div>
+</div>
+</footer>
+</body></html>

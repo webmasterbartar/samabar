@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>درباره ما - سما بار</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c0c9be",
+                        "inverse-primary": "#a7c8ff",
+                        "on-primary-container": "#799dd6",
+                        "secondary-fixed": "#ffdad8",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#43474f",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed": "#410007",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#183153",
+                        "surface-tint": "#3a5f94",
+                        "primary-container": "#003366",
+                        "inverse-on-surface": "#ecf1ff",
+                        "primary": "#001e40",
+                        "on-surface": "#001b3c",
+                        "surface-dim": "#c8dbff",
+                        "surface-container": "#e7eeff",
+                        "on-primary-fixed": "#001b3c",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#dce5d9",
+                        "secondary": "#b7102a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-container": "#db313f",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#001b3c",
+                        "error": "#ba1a1a",
+                        "tertiary": "#182019",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "on-tertiary-container": "#959e93",
+                        "tertiary-container": "#2d352d",
+                        "on-tertiary-fixed": "#161d16",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "outline": "#737780",
+                        "on-tertiary-fixed-variant": "#404940",
+                        "primary-fixed": "#d5e3ff",
+                        "surface": "#f9f9ff",
+                        "surface-container-highest": "#d5e3ff",
+                        "surface-variant": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dee8ff",
+                        "outline-variant": "#c3c6d1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Vazirmatn"],
+                        "headline-lg-mobile": ["Vazirmatn"],
+                        "label-md": ["Vazirmatn"],
+                        "body-lg": ["Vazirmatn"],
+                        "label-sm": ["Vazirmatn"],
+                        "headline-xl": ["Vazirmatn"],
+                        "headline-lg": ["Vazirmatn"],
+                        "body-md": ["Vazirmatn"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Vazirmatn', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-surface/95 dark:bg-primary/95 backdrop-blur-md border-b border-outline-variant dark:border-outline shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-margin py-sm w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">سما بار</div>
+<nav class="hidden md:flex gap-gutter">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md" href="#">خدمات</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md" href="#">قیمت‌ها</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary pb-1 font-label-md text-label-md" href="#">درباره ما</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim font-label-md text-label-md" href="#">همکاری</a>
+</nav>
+<div class="flex gap-sm">
+<button class="hidden md:block px-md py-base border border-primary text-primary font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-low transition-colors">ورود / ثبت‌نام</button>
+<button class="px-md py-base bg-secondary text-on-secondary font-label-md text-label-md rounded-DEFAULT hover:bg-secondary-container transition-colors shadow-sm">ثبت سفارش</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative bg-primary-container text-on-primary-container py-xl md:py-24 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-container opacity-90 z-0"></div>
+<img alt="Logistics Hero Background" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 z-0" data-alt="A massive, modern logistics distribution center at dusk. High-tech automated conveyor belts and forklifts are in operation. The scene is illuminated by cool, crisp warehouse lighting with dynamic blue accents. The overall aesthetic is highly professional, clean, and corporate, emphasizing efficiency and scale in a technological environment. The color palette heavily features deep navy blues, crisp whites, and subtle metallic tones, aligning with a tech-forward logistics brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6N5XAQws6a4ieO5_2ln0jXRRnvmo6bdyaIItO73gCfiGk8N-hlIZ7HI3BxzRj9RK8TjcV28XJY-t7ugNZhTdm1YyoZJpOfwjN82RQmE8UMEM_ssiZP2aM2EKO5YIGZ18M0EWDWk5nACkX33eGVwwp3bL1SIbwieLhBQNQ_1vfGnf-grD4j6b9NEFOlUd1djE_8mYyQTxEijcQie7JfP-XTHYurz97S6f2FILmnIjAc9Vg3xqNVOVjRr-DlVBH8mrrmMvCERAX3tc"/>
+<div class="max-w-7xl mx-auto px-margin relative z-10 text-center flex flex-col items-center justify-center min-h-[409px]">
+<h1 class="font-headline-xl text-headline-xl text-on-primary mb-lg">سما بار؛ راهکار مدرن حمل‌ونقل برای کسب‌وکارها</h1>
+<p class="font-body-lg text-body-lg text-inverse-primary max-w-3xl opacity-90">ما در سما بار با تکیه بر فناوری‌های نوین، فرایند پیچیده لجستیک را ساده، شفاف و سریع کرده‌ایم تا شما تنها بر توسعه کسب‌وکار خود تمرکز کنید.</p>
+</div>
+</section>
+<!-- Mission / Story Section -->
+<section class="py-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div class="space-y-sm">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">از سنتی تا دیجیتال، مسیر ما برای بهبود لجستیک</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">لجستیک سنتی همواره با چالش‌هایی چون عدم شفافیت هزینه‌ها، تاخیر در رهگیری و پیچیدگی‌های ارتباطی روبرو بوده است. سما بار با هدف رفع این موانع متولد شد.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">ماموریت ما، دیجیتالی کردن کامل زنجیره تامین کالا از لحظه ثبت درخواست تا تحویل نهایی است. ما به شفافیت کامل، سرعت عمل و قابلیت اطمینان بالا اعتقاد داریم و این ارزش‌ها را در بستر یک پلتفرم هوشمند به مشتریان خود ارائه می‌دهیم.</p>
+</div>
+<div class="relative h-80 rounded-xl overflow-hidden shadow-lg border border-outline-variant">
+<img alt="Digital Logistics Operations" class="absolute inset-0 w-full h-full object-cover" data-alt="A clean, minimalist high-tech logistics control room. Professionals are analyzing digital supply chain data on large interactive displays. The environment is bright and modern, utilizing a sophisticated light-mode aesthetic with expansive white space. The lighting is crisp and cool, casting soft, ambient shadows. The dominant colors are crisp whites, light grays, and strategic primary blue highlights, projecting a sense of precision, transparency, and advanced operational capability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbiNRi3DAA6b-ZykhorlNFAD7mgnKJzfY1vpZDHBKNO3Lj060SaknU916fFMWI3IYpAL4PYzcZilOlmgi-BjCj0fYi5XVngxXzHOUtcwIwWO0hPrj8h8jYmwnTpyopRQP72NOtMjRuVwphuNFU9wt2aCsRNEGYYGRJMq_LXguoHKU6TMa3Sptv51OQtOsHEPCd9UdqIxuvH_N51ijlTKzywqJKXk0dnwuZDtkZj3T212_3L1DS_2szEG1owdcjqHtpU4nyykTmhS8"/>
+</div>
+</div>
+</section>
+<!-- Values Section (Bento Grid) -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary">ارزش‌های کلیدی ما</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">اصولی که سما بار بر پایه آن‌ها بنا شده است</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+<!-- Value Card 1 -->
+<div class="bg-surface rounded-xl p-lg shadow-[0_4px_12px_rgba(0,30,64,0.05)] border border-outline-variant/30 hover:shadow-[0_8px_24px_rgba(0,30,64,0.1)] transition-all duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary mb-sm">price_check</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">قیمت‌گذاری شفاف</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">محاسبه دقیق و هوشمند هزینه‌ها بدون هیچ‌گونه هزینه پنهان.</p>
+</div>
+<!-- Value Card 2 -->
+<div class="bg-surface rounded-xl p-lg shadow-[0_4px_12px_rgba(0,30,64,0.05)] border border-outline-variant/30 hover:shadow-[0_8px_24px_rgba(0,30,64,0.1)] transition-all duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary mb-sm">location_on</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">رهگیری لحظه‌ای</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">پیگیری دقیق موقعیت بار شما از مبدا تا مقصد به صورت زنده.</p>
+</div>
+<!-- Value Card 3 -->
+<div class="bg-surface rounded-xl p-lg shadow-[0_4px_12px_rgba(0,30,64,0.05)] border border-outline-variant/30 hover:shadow-[0_8px_24px_rgba(0,30,64,0.1)] transition-all duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary mb-sm">support_agent</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">پشتیبانی حرفه‌ای</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">تیم پشتیبانی متخصص ما ۲۴ ساعته در کنار شماست.</p>
+</div>
+<!-- Value Card 4 -->
+<div class="bg-surface rounded-xl p-lg shadow-[0_4px_12px_rgba(0,30,64,0.05)] border border-outline-variant/30 hover:shadow-[0_8px_24px_rgba(0,30,64,0.1)] transition-all duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary mb-sm">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">رانندگان تایید شده</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">همکاری با ناوگان مجرب و تایید صلاحیت شده برای امنیت بیشتر.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-xl bg-primary text-on-primary">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-xl text-center">
+<div>
+<div class="font-headline-xl text-headline-xl text-inverse-primary mb-xs">+۵۰,۰۰۰</div>
+<div class="font-label-md text-label-md text-on-primary opacity-80">سفارش موفق</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-inverse-primary mb-xs">۳۱</div>
+<div class="font-label-md text-label-md text-on-primary opacity-80">استان فعال</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-inverse-primary mb-xs">+۱۰,۰۰۰</div>
+<div class="font-label-md text-label-md text-on-primary opacity-80">راننده مجرب</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-inverse-primary mb-xs">٪۹۸</div>
+<div class="font-label-md text-label-md text-on-primary opacity-80">رضایت مشتریان</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Operations Visual Section -->
+<section class="py-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="md:col-span-2 relative h-[400px] rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<img alt="Fleet Operations" class="absolute inset-0 w-full h-full object-cover" data-alt="An expansive aerial view of an organized fleet of heavy-duty transport trucks neatly parked at a modern logistics terminal. The scene is captured in bright, clear daylight, emphasizing vastness and systematic order. The color palette features stark whites, industrial grays, and prominent corporate blue accents. The visual style is crisp, clean, and highly professional, conveying massive operational capacity and structural integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBduLOwVfqtlVFsDhZUUIPHUnkmt3re5T5u7N85wfch6WL8JRIwWycq6c85EBR0MUXW2tlewoWDCwW5kKZ9g3zUzoHcmIB1Tqg4zk2KifqS6cYZl8lC2vDGQC-PENDoEIC3Zbhkij5D0wUud_N7siyohf_WnwrGgNeK_E8p76TH2xwcQo84ijvsQvr90d3PHwma_QBdHNZp8pZd4U4rgFJwpEQfs5YlSAH9qP5FCGp8RrUP3UUSaOYch0hY2b3XRw2u9BkdyFHwdJg"/>
+</div>
+<div class="relative h-[400px] rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<img alt="Monitoring Center" class="absolute inset-0 w-full h-full object-cover" data-alt="Close up of a logistics manager holding a digital tablet showcasing a real-time fleet tracking dashboard. The interface on the tablet is sleek and modern, utilizing a clean UI with blue data visualization lines. The background is a slightly blurred, high-tech distribution center. The lighting is bright and focused, highlighting technological precision and control over logistics processes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNiNos52g4wlAUeWVI7UxX4kDTAbIjRz-ogVL-Bt--cEbJwHZKuJw6KR_maJvjolU4OFKI_ujn3Q0STfpzdorKKcPU5lVqbffrQwSNwnscqO0kXH8VNmUEwczoBtPo-OCF4M4ZHgKAJ_JpXDQGqx-HgD7sPKQaJXU4iDslWkUOcRGjjIgbfhkaO0SvaNMyf3chgNAQZTqy23RxCqzWV4abV-CiAGQJiMhYDHUr_5PgE4heGo-uqPqvO_wt40mM6wO3c5qbnEJAy3c"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-xl bg-surface-container-high">
+<div class="max-w-4xl mx-auto px-margin text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">آماده ارتقای سیستم حمل‌ونقل خود هستید؟</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">به شبکه گسترده سما بار بپیوندید و لجستیک کسب‌وکار خود را متحول کنید.</p>
+<button class="px-xl py-sm bg-secondary text-on-secondary font-headline-md text-headline-md rounded-lg hover:bg-secondary-container transition-colors shadow-[0_4px_12px_rgba(183,16,42,0.3)]">همین حالا سفارش خود را ثبت کنید</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-t border-primary-container dark:border-outline-variant w-full">
+<div class="max-w-7xl mx-auto px-margin py-xl grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="md:col-span-1">
+<div class="font-headline-sm text-headline-sm font-bold text-on-primary mb-sm">سما بار</div>
+<p class="font-body-md text-body-md opacity-80 text-sm">راهکار هوشمند لجستیک برای کسب‌وکارهای نوین.</p>
+</div>
+<div class="md:col-span-3 flex flex-wrap gap-lg justify-end">
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-all" href="#">تماس با ما</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-all" href="#">حریم خصوصی</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-all" href="#">نقشه سایت</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-all" href="#">سوالات متداول</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-on-primary hover:underline decoration-secondary underline-offset-4 opacity-90 hover:opacity-100 transition-all" href="#">فرصت‌های شغلی</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin pb-md pt-sm border-t border-primary-container/30">
+<p class="font-body-md text-body-md text-center text-sm opacity-60">© ۱۴۰۲ تمامی حقوق برای سما بار محفوظ است. عضو رسمی اتحادیه حمل و نقل.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# WordPress config (local credentials)
+wp-config.php
+
+# User uploads & backups
+wp-content/uploads/
+wp-content/backups-dup-lite/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Logs & temp
+*.log
+debug.log
+PaxHeaders/
+**/PaxHeaders/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*

@@ -1,0 +1,81 @@
+/* PeydaWebFaNum */
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Thin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 200;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Light.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Medium.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'PeydaWebFaNum';
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url('../../font/PeydaWebFaNum-Black.woff2') format('woff2');
+}
+
+/* Material Symbols */
+@font-face {
+	font-family: 'Material Symbols Outlined';
+	font-style: normal;
+	font-weight: 100 700;
+	font-display: swap;
+	src: url('../../font/material-symbols-v39-latin-regular.woff2') format('woff2');
+}
