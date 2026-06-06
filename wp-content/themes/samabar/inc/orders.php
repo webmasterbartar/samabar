@@ -148,8 +148,6 @@ function samabar_sanitize_order_data( $data ) {
 		$service = 'corporate';
 	}
 
-	$prices = samabar_get_service_prices();
-
 	$origin_city          = sanitize_text_field( $data['origin_city'] ?? '' );
 	$origin_address       = sanitize_textarea_field( $data['origin_address'] ?? '' );
 	$origin_detail        = sanitize_text_field( $data['origin_detail'] ?? '' );
@@ -184,7 +182,7 @@ function samabar_sanitize_order_data( $data ) {
 		'dim_height'   => sanitize_text_field( $data['dim_height'] ?? '' ),
 		'description'  => sanitize_textarea_field( $data['description'] ?? '' ),
 		'service'      => $service,
-		'total_price'  => $prices[ $service ] ?? $prices['corporate'],
+		'total_price'  => 0,
 		'full_name'    => sanitize_text_field( $data['full_name'] ?? '' ),
 		'phone'        => samabar_sanitize_phone( $data['phone'] ?? '' ),
 		'company'      => sanitize_text_field( $data['company'] ?? '' ),
@@ -259,6 +257,20 @@ function samabar_create_order( $data ) {
 	if ( ! samabar_validate_phone( $data['phone'] ) ) {
 		return new WP_Error( 'invalid_phone', __( 'شماره موبایل معتبر نیست.', 'samabar' ), array( 'status' => 400 ) );
 	}
+
+	$origin_city      = $data['origin_city'] ?: $data['origin'];
+	$destination_city = $data['destination_city'] ?: $data['destination'];
+	$route_valid      = samabar_validate_route_cities( $origin_city, $destination_city );
+	if ( is_wp_error( $route_valid ) ) {
+		return $route_valid;
+	}
+
+	$freight = samabar_calculate_tariff_freight( $origin_city, $destination_city, (int) $data['weight'] );
+	if ( is_wp_error( $freight ) ) {
+		return $freight;
+	}
+
+	$data['total_price'] = (int) $freight['amount'];
 
 	if ( ! empty( $data['pickup_date'] ) && ! samabar_is_pickup_datetime_available( $data['pickup_date'] ) ) {
 		return new WP_Error(
@@ -585,6 +597,44 @@ function samabar_rest_get_pickup_availability( WP_REST_Request $request ) {
 }
 
 /**
+ * REST: calculate freight from tariff.
+ *
+ * @param WP_REST_Request $request Request.
+ * @return WP_REST_Response|WP_Error
+ */
+function samabar_rest_calculate_freight( WP_REST_Request $request ) {
+	$params = $request->get_json_params();
+	if ( ! is_array( $params ) ) {
+		$params = $request->get_params();
+	}
+
+	$origin      = sanitize_text_field( $params['origin_city'] ?? $params['origin'] ?? '' );
+	$destination = sanitize_text_field( $params['destination_city'] ?? $params['destination'] ?? '' );
+	$weight      = absint( $params['weight'] ?? $params['weight_kg'] ?? 0 );
+
+	if ( ! $weight ) {
+		return new WP_Error(
+			'missing_weight',
+			__( 'وزن محموله را وارد کنید.', 'samabar' ),
+			array( 'status' => 400 )
+		);
+	}
+
+	$result = samabar_calculate_tariff_freight( $origin, $destination, $weight );
+	if ( is_wp_error( $result ) ) {
+		return $result;
+	}
+
+	return new WP_REST_Response(
+		array(
+			'success' => true,
+			'freight' => samabar_format_freight_response( $result ),
+		),
+		200
+	);
+}
+
+/**
  * Register REST routes.
  */
 function samabar_register_order_routes() {
@@ -617,6 +667,16 @@ function samabar_register_order_routes() {
 					'sanitize_callback' => 'absint',
 				),
 			),
+		)
+	);
+
+	register_rest_route(
+		'samabar/v1',
+		'/calculate-freight',
+		array(
+			'methods'             => WP_REST_Server::CREATABLE,
+			'callback'            => 'samabar_rest_calculate_freight',
+			'permission_callback' => '__return_true',
 		)
 	);
 }
@@ -802,13 +862,23 @@ function samabar_format_pickup_date( $value ) {
 }
 
 /**
- * Format price for display.
+ * Convert stored Rial amount to Toman for display.
+ *
+ * @param int|float $rial Amount in Rial.
+ * @return int
+ */
+function samabar_rial_to_toman( $rial ) {
+	return (int) round( max( 0, (float) $rial ) / 10 );
+}
+
+/**
+ * Format price for display (input is Rial, output is Toman).
  *
  * @param int $price Price in Rial.
  * @return string
  */
 function samabar_format_price( $price ) {
-	return number_format_i18n( $price ) . ' ﷼';
+	return number_format_i18n( samabar_rial_to_toman( $price ) ) . ' ' . __( 'تومان', 'samabar' );
 }
 
 require get_template_directory() . '/inc/tracking.php';

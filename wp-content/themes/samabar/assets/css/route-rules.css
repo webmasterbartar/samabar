@@ -1,0 +1,52 @@
+.route-notice {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	margin: 0 0 1.25rem;
+	padding: 0.875rem 1rem;
+	border-radius: 0.75rem;
+	background: rgba(0, 30, 64, 0.06);
+	border: 1px solid rgba(0, 30, 64, 0.12);
+	color: var(--color-text, #1a1a1a);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+}
+
+.route-notice[hidden] {
+	display: none !important;
+}
+
+.route-notice .icon {
+	flex-shrink: 0;
+	font-size: 1.25rem;
+	color: var(--color-primary, #001e40);
+	margin-top: 0.1rem;
+}
+
+.route-notice--error {
+	background: rgba(183, 16, 42, 0.08);
+	border-color: rgba(183, 16, 42, 0.25);
+	color: #7a1024;
+}
+
+.route-notice--error .icon {
+	color: var(--color-secondary, #b7102a);
+}
+
+.route-field-error {
+	border-color: var(--color-secondary, #b7102a) !important;
+	box-shadow: 0 0 0 1px rgba(183, 16, 42, 0.2);
+}
+
+.order-route-status.is-invalid .order-route-status__text {
+	color: var(--color-secondary, #b7102a);
+}
+
+.order-route-status.is-valid .order-route-status__icon {
+	color: #1b7f4a;
+}
+
+.pricing-form__alert {
+	margin-top: 0.25rem;
+	margin-bottom: 1rem;
+}

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function samabar_get_contact_address() {
-	return 'تهران، خیابان جنت‌آباد مرکزی، خیابان مخبری، پلاک ۲۱۹';
+	return 'بندرعباس، قلعه شاهی، میدان شهدا، خیابان صیادان';
 }
 
 /**
@@ -51,7 +51,7 @@ function samabar_get_contact_phone_url() {
  * @return string
  */
 function samabar_get_contact_email() {
-	return 'jahromAirlines@gmail.com';
+	return 'info@samabar.com';
 }
 
 /**

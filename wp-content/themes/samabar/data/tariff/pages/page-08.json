@@ -1,0 +1,365 @@
+{
+	"meta": {
+		"title": "نرخنامه سال ۱۴۰۳",
+		"effective_date": "1403/03/24",
+		"base_price_month": "خرداد ۱۴۰۳",
+		"hub_city": "بندرعباس",
+		"page": 8,
+		"rows_from": 244,
+		"rows_to": 278,
+		"source_file": "08.png",
+		"parsed_at": "2026-06-03"
+	},
+	"routes": [
+		{
+			"row": 244,
+			"destination": "فاروج",
+			"destination_primary": "فاروج",
+			"destination_alias": null,
+			"distance_km": 1598,
+			"base_rial": 523200000,
+			"per_ton_rial": 23800000,
+			"truck_15t_rial": 357000000
+		},
+		{
+			"row": 245,
+			"destination": "فاضل آباد",
+			"destination_primary": "فاضل آباد",
+			"destination_alias": null,
+			"distance_km": 1552,
+			"base_rial": 540800000,
+			"per_ton_rial": 24600000,
+			"truck_15t_rial": 369000000
+		},
+		{
+			"row": 246,
+			"destination": "فراشبند",
+			"destination_primary": "فراشبند",
+			"destination_alias": null,
+			"distance_km": 722,
+			"base_rial": 301400000,
+			"per_ton_rial": 13700000,
+			"truck_15t_rial": 205500000
+		},
+		{
+			"row": 247,
+			"destination": "فرخ شهر",
+			"destination_primary": "فرخ شهر",
+			"destination_alias": null,
+			"distance_km": 961,
+			"base_rial": 383800000,
+			"per_ton_rial": 17400000,
+			"truck_15t_rial": 261000000
+		},
+		{
+			"row": 248,
+			"destination": "فردوس (خراسان جنوبی)",
+			"destination_primary": "فردوس",
+			"destination_alias": "خراسان جنوبی",
+			"distance_km": 1035,
+			"base_rial": 447300000,
+			"per_ton_rial": 20300000,
+			"truck_15t_rial": 304500000
+		},
+		{
+			"row": 249,
+			"destination": "فرمهین",
+			"destination_primary": "فرمهین",
+			"destination_alias": null,
+			"distance_km": 1293,
+			"base_rial": 438200000,
+			"per_ton_rial": 19900000,
+			"truck_15t_rial": 298500000
+		},
+		{
+			"row": 250,
+			"destination": "فریدونکنار",
+			"destination_primary": "فریدونکنار",
+			"destination_alias": null,
+			"distance_km": 1500,
+			"base_rial": 536400000,
+			"per_ton_rial": 24400000,
+			"truck_15t_rial": 366000000
+		},
+		{
+			"row": 251,
+			"destination": "فریمان",
+			"destination_primary": "فریمان",
+			"destination_alias": null,
+			"distance_km": 1661,
+			"base_rial": 533200000,
+			"per_ton_rial": 24200000,
+			"truck_15t_rial": 363000000
+		},
+		{
+			"row": 252,
+			"destination": "فسا",
+			"destination_primary": "فسا",
+			"destination_alias": null,
+			"distance_km": 433,
+			"base_rial": 259500000,
+			"per_ton_rial": 11800000,
+			"truck_15t_rial": 177000000
+		},
+		{
+			"row": 253,
+			"destination": "فلاورجان",
+			"destination_primary": "فلاورجان",
+			"destination_alias": null,
+			"distance_km": 938,
+			"base_rial": 387900000,
+			"per_ton_rial": 17600000,
+			"truck_15t_rial": 264000000
+		},
+		{
+			"row": 254,
+			"destination": "فومن",
+			"destination_primary": "فومن",
+			"destination_alias": null,
+			"distance_km": 1611,
+			"base_rial": 526600000,
+			"per_ton_rial": 23900000,
+			"truck_15t_rial": 358500000
+		},
+		{
+			"row": 255,
+			"destination": "فین هرمزگان",
+			"destination_primary": "فین هرمزگان",
+			"destination_alias": null,
+			"distance_km": 97,
+			"base_rial": 152600000,
+			"per_ton_rial": 6900000,
+			"truck_15t_rial": 103500000
+		},
+		{
+			"row": 256,
+			"destination": "فیروزآباد (فارس)",
+			"destination_primary": "فیروزآباد",
+			"destination_alias": "فارس",
+			"distance_km": 636,
+			"base_rial": 301400000,
+			"per_ton_rial": 13700000,
+			"truck_15t_rial": 205500000
+		},
+		{
+			"row": 257,
+			"destination": "فیروزکوه",
+			"destination_primary": "فیروزکوه",
+			"destination_alias": null,
+			"distance_km": 1426,
+			"base_rial": 467100000,
+			"per_ton_rial": 21200000,
+			"truck_15t_rial": 318000000
+		},
+		{
+			"row": 258,
+			"destination": "فیض آباد (خراسان)",
+			"destination_primary": "فیض آباد",
+			"destination_alias": "خراسان",
+			"distance_km": 1193,
+			"base_rial": 518700000,
+			"per_ton_rial": 23600000,
+			"truck_15t_rial": 354000000
+		},
+		{
+			"row": 259,
+			"destination": "قادرآباد (فارس)",
+			"destination_primary": "قادرآباد",
+			"destination_alias": "فارس",
+			"distance_km": 650,
+			"base_rial": 296200000,
+			"per_ton_rial": 13500000,
+			"truck_15t_rial": 202500000
+		},
+		{
+			"row": 260,
+			"destination": "قائم شهر",
+			"destination_primary": "قائم شهر",
+			"destination_alias": null,
+			"distance_km": 1515,
+			"base_rial": 533200000,
+			"per_ton_rial": 24200000,
+			"truck_15t_rial": 363000000
+		},
+		{
+			"row": 261,
+			"destination": "قائن (قائنات)",
+			"destination_primary": "قائن",
+			"destination_alias": "قائنات",
+			"distance_km": 1275,
+			"base_rial": 473900000,
+			"per_ton_rial": 21500000,
+			"truck_15t_rial": 322500000
+		},
+		{
+			"row": 262,
+			"destination": "قرچک",
+			"destination_primary": "قرچک",
+			"destination_alias": null,
+			"distance_km": 1284,
+			"base_rial": 425400000,
+			"per_ton_rial": 19300000,
+			"truck_15t_rial": 289500000
+		},
+		{
+			"row": 263,
+			"destination": "قرچک باقر آباد",
+			"destination_primary": "قرچک باقر آباد",
+			"destination_alias": null,
+			"distance_km": 1300,
+			"base_rial": 432500000,
+			"per_ton_rial": 19700000,
+			"truck_15t_rial": 295500000
+		},
+		{
+			"row": 264,
+			"destination": "قروه",
+			"destination_primary": "قروه",
+			"destination_alias": null,
+			"distance_km": 1500,
+			"base_rial": 488300000,
+			"per_ton_rial": 22200000,
+			"truck_15t_rial": 333000000
+		},
+		{
+			"row": 265,
+			"destination": "قزوین",
+			"destination_primary": "قزوین",
+			"destination_alias": null,
+			"distance_km": 1402,
+			"base_rial": 457100000,
+			"per_ton_rial": 20800000,
+			"truck_15t_rial": 312000000
+		},
+		{
+			"row": 266,
+			"destination": "قشم",
+			"destination_primary": "قشم",
+			"destination_alias": null,
+			"distance_km": 80,
+			"base_rial": 198500000,
+			"per_ton_rial": 9000000,
+			"truck_15t_rial": 135000000
+		},
+		{
+			"row": 267,
+			"destination": "قصرشیرین",
+			"destination_primary": "قصرشیرین",
+			"destination_alias": null,
+			"distance_km": 1640,
+			"base_rial": 564400000,
+			"per_ton_rial": 25700000,
+			"truck_15t_rial": 385500000
+		},
+		{
+			"row": 268,
+			"destination": "قم",
+			"destination_primary": "قم",
+			"destination_alias": null,
+			"distance_km": 1140,
+			"base_rial": 412900000,
+			"per_ton_rial": 18800000,
+			"truck_15t_rial": 282000000
+		},
+		{
+			"row": 269,
+			"destination": "قوچان",
+			"destination_primary": "قوچان",
+			"destination_alias": null,
+			"distance_km": 1566,
+			"base_rial": 533200000,
+			"per_ton_rial": 24200000,
+			"truck_15t_rial": 363000000
+		},
+		{
+			"row": 270,
+			"destination": "قهدریجان",
+			"destination_primary": "قهدریجان",
+			"destination_alias": null,
+			"distance_km": 997,
+			"base_rial": 404700000,
+			"per_ton_rial": 18400000,
+			"truck_15t_rial": 276000000
+		},
+		{
+			"row": 271,
+			"destination": "قیروکارزین",
+			"destination_primary": "قیروکارزین",
+			"destination_alias": null,
+			"distance_km": 565,
+			"base_rial": 259500000,
+			"per_ton_rial": 11800000,
+			"truck_15t_rial": 177000000
+		},
+		{
+			"row": 272,
+			"destination": "کازرون",
+			"destination_primary": "کازرون",
+			"destination_alias": null,
+			"distance_km": 732,
+			"base_rial": 326100000,
+			"per_ton_rial": 14800000,
+			"truck_15t_rial": 222000000
+		},
+		{
+			"row": 273,
+			"destination": "کاشان",
+			"destination_primary": "کاشان",
+			"destination_alias": null,
+			"distance_km": 1037,
+			"base_rial": 399000000,
+			"per_ton_rial": 18100000,
+			"truck_15t_rial": 271500000
+		},
+		{
+			"row": 274,
+			"destination": "کاشمر",
+			"destination_primary": "کاشمر",
+			"destination_alias": null,
+			"distance_km": 1264,
+			"base_rial": 473900000,
+			"per_ton_rial": 21500000,
+			"truck_15t_rial": 322500000
+		},
+		{
+			"row": 275,
+			"destination": "کامیاران",
+			"destination_primary": "کامیاران",
+			"destination_alias": null,
+			"distance_km": 1660,
+			"base_rial": 528200000,
+			"per_ton_rial": 24000000,
+			"truck_15t_rial": 360000000
+		},
+		{
+			"row": 276,
+			"destination": "کبودرآهنگ",
+			"destination_primary": "کبودرآهنگ",
+			"destination_alias": null,
+			"distance_km": 1391,
+			"base_rial": 457800000,
+			"per_ton_rial": 20800000,
+			"truck_15t_rial": 312000000
+		},
+		{
+			"row": 277,
+			"destination": "کرج",
+			"destination_primary": "کرج",
+			"destination_alias": null,
+			"distance_km": 1296,
+			"base_rial": 442100000,
+			"per_ton_rial": 20100000,
+			"truck_15t_rial": 301500000
+		},
+		{
+			"row": 278,
+			"destination": "کردان",
+			"destination_primary": "کردان",
+			"destination_alias": null,
+			"distance_km": 1319,
+			"base_rial": 433900000,
+			"per_ton_rial": 19700000,
+			"truck_15t_rial": 295500000
+		}
+	]
+}

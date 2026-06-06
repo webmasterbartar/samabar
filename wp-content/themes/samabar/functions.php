@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SAMABAR_VERSION', '0.9.13' );
+define( 'SAMABAR_VERSION', '0.11.2' );
 
 require get_template_directory() . '/inc/theme-pages.php';
 require get_template_directory() . '/inc/jalali.php';
@@ -19,6 +19,9 @@ require get_template_directory() . '/inc/faq.php';
 require get_template_directory() . '/inc/contact-info.php';
 require get_template_directory() . '/inc/contact.php';
 require get_template_directory() . '/inc/blog.php';
+require get_template_directory() . '/inc/home.php';
+require get_template_directory() . '/inc/tariff-import.php';
+require get_template_directory() . '/inc/tariff.php';
 require get_template_directory() . '/inc/footer-pages.php';
 require get_template_directory() . '/inc/test-data.php';
 
@@ -98,6 +101,34 @@ function samabar_document_title( $title ) {
 add_filter( 'document_title_parts', 'samabar_document_title' );
 
 /**
+ * Enqueue shared hub route validation script + config.
+ *
+ * @return void
+ */
+function samabar_enqueue_route_rules() {
+	wp_enqueue_script(
+		'samabar-route-rules',
+		get_template_directory_uri() . '/assets/js/route-rules.js',
+		array(),
+		SAMABAR_VERSION,
+		true
+	);
+
+	wp_localize_script(
+		'samabar-route-rules',
+		'samabarRouteRules',
+		samabar_get_route_rules_config()
+	);
+
+	wp_enqueue_style(
+		'samabar-route-rules',
+		get_template_directory_uri() . '/assets/css/route-rules.css',
+		array(),
+		SAMABAR_VERSION
+	);
+}
+
+/**
  * Enqueue theme assets.
  */
 function samabar_enqueue_assets() {
@@ -132,6 +163,16 @@ function samabar_enqueue_assets() {
 	);
 
 	if ( is_front_page() ) {
+		samabar_enqueue_route_rules();
+
+		wp_enqueue_script(
+			'samabar-hero-form',
+			get_template_directory_uri() . '/assets/js/hero-form.js',
+			array( 'samabar-route-rules' ),
+			SAMABAR_VERSION,
+			true
+		);
+
 		wp_enqueue_script(
 			'samabar-testimonials',
 			get_template_directory_uri() . '/assets/js/testimonials.js',
@@ -158,10 +199,29 @@ function samabar_enqueue_assets() {
 			SAMABAR_VERSION
 		);
 
+		samabar_enqueue_route_rules();
+
+		wp_enqueue_script(
+			'samabar-tariff-calc',
+			get_template_directory_uri() . '/assets/js/tariff-calc.js',
+			array( 'samabar-route-rules' ),
+			SAMABAR_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			'samabar-tariff-calc',
+			'samabarTariffCalc',
+			array(
+				'calculateUrl' => rest_url( 'samabar/v1/calculate-freight' ),
+				'nonce'        => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+
 		wp_enqueue_script(
 			'samabar-pricing',
 			get_template_directory_uri() . '/assets/js/pricing.js',
-			array(),
+			array( 'samabar-route-rules', 'samabar-tariff-calc' ),
 			SAMABAR_VERSION,
 			true
 		);
@@ -199,10 +259,20 @@ function samabar_enqueue_assets() {
 			true
 		);
 
+		samabar_enqueue_route_rules();
+
+		wp_enqueue_script(
+			'samabar-tariff-calc',
+			get_template_directory_uri() . '/assets/js/tariff-calc.js',
+			array( 'samabar-route-rules' ),
+			SAMABAR_VERSION,
+			true
+		);
+
 		wp_enqueue_script(
 			'samabar-order',
 			get_template_directory_uri() . '/assets/js/order.js',
-			array( 'samabar-persian-datetime', 'samabar-customer-session' ),
+			array( 'samabar-persian-datetime', 'samabar-customer-session', 'samabar-route-rules', 'samabar-tariff-calc' ),
 			SAMABAR_VERSION,
 			true
 		);
@@ -215,9 +285,9 @@ function samabar_enqueue_assets() {
 				'trackingUrl'     => samabar_get_tracking_url(),
 				'dashboardUrl'    => samabar_get_dashboard_url(),
 				'restUrl'         => rest_url( 'samabar/v1/orders' ),
+				'calculateUrl'    => rest_url( 'samabar/v1/calculate-freight' ),
 				'availabilityUrl' => rest_url( 'samabar/v1/pickup-availability' ),
 				'nonce'           => wp_create_nonce( 'wp_rest' ),
-				'servicePrices'   => samabar_get_service_prices(),
 				'serviceLabels'   => samabar_get_service_labels(),
 				'cargoLabels'     => samabar_get_cargo_labels(),
 			)

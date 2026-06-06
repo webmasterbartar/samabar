@@ -21,8 +21,9 @@
 		return;
 	}
 
-	function formatPrice(value) {
-		return Number(value || 0).toLocaleString('fa-IR');
+	function formatPrice(rial) {
+		const toman = Math.round(Number(rial || 0) / 10);
+		return toman.toLocaleString('fa-IR');
 	}
 
 	function showGate(message) {
@@ -96,7 +97,7 @@
 			'</strong></article>' +
 			'<article class="dashboard-stat"><span class="dashboard-stat__label">هزینه ماه جاری</span><strong class="dashboard-stat__value">' +
 			formatPrice(stats.month_spend) +
-			' <small>ریال</small></strong></article>' +
+			' <small>تومان</small></strong></article>' +
 			'<article class="dashboard-stat"><span class="dashboard-stat__label">میانگین زمان تحویل</span><strong class="dashboard-stat__value">' +
 			avg +
 			'</strong></article>';
@@ -199,12 +200,12 @@
 				'<span class="dashboard-stat__label">مجموع پرداخت\u200cها</span>' +
 				'<strong class="dashboard-stat__value">' +
 				formatPrice(payments.total_spent) +
-				' <small>ریال</small></strong></article>' +
+				' <small>تومان</small></strong></article>' +
 				'<article class="dashboard-stat dashboard-stat--inline">' +
 				'<span class="dashboard-stat__label">هزینه ماه جاری</span>' +
 				'<strong class="dashboard-stat__value">' +
 				formatPrice(payments.month_spend) +
-				' <small>ریال</small></strong></article>';
+				' <small>تومان</small></strong></article>';
 		}
 
 		if (!tbody) {

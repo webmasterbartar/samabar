@@ -1,30 +1,23 @@
 <?php
 /**
  * Template Name: ثبت سفارش
- * Three-step order registration flow.
+ * Single-page order registration.
  *
  * @package Samabar
  */
 
-$step = max( 1, min( 3, (int) ( $_GET['step'] ?? 1 ) ) );
+if ( ! empty( $_GET['step'] ) && (int) $_GET['step'] > 1 ) {
+	wp_safe_redirect( samabar_get_order_url() );
+	exit;
+}
 
 get_header();
 ?>
 
-<main id="primary" class="site-main site-main--order" data-order-step="<?php echo esc_attr( (string) $step ); ?>">
+<main id="primary" class="site-main site-main--order">
 
 	<div class="container order-main">
-		<?php get_template_part( 'template-parts/order/step-indicator', null, array( 'step' => $step ) ); ?>
-
-		<?php
-		if ( 1 === $step ) {
-			get_template_part( 'template-parts/order/step', '1' );
-		} elseif ( 2 === $step ) {
-			get_template_part( 'template-parts/order/step', '2' );
-		} else {
-			get_template_part( 'template-parts/order/step', '3' );
-		}
-		?>
+		<?php get_template_part( 'template-parts/order/form' ); ?>
 	</div>
 </main>
 

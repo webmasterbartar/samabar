@@ -5,77 +5,22 @@
  * @package Samabar
  */
 
-$order_base      = samabar_get_order_url();
-$tracking_base   = samabar_get_tracking_url();
-$dashboard_base  = samabar_get_dashboard_url();
-$prev_url        = add_query_arg( 'step', '2', $order_base );
-$home_url        = home_url( '/' );
-$service_prices = samabar_get_service_prices();
+$order_base     = samabar_get_order_url();
+$tracking_base  = samabar_get_tracking_url();
+$dashboard_base = samabar_get_dashboard_url();
+$prev_url       = add_query_arg( 'step', '2', $order_base );
+$home_url       = home_url( '/' );
 ?>
 <div class="order-form" id="order-form-step-3">
-	<div class="order-layout order-layout--review">
-		<section class="order-review-main">
-			<h1 class="order-step-intro__title text-headline-lg">انتخاب سرویس ارسال</h1>
+	<div class="order-step-intro order-step-intro--center">
+		<h1 class="order-step-intro__title text-headline-lg">مرور و تایید سفارش</h1>
+		<p class="order-step-intro__text text-body-md">جزئیات سفارش و کرایه حمل را بررسی کنید و در صورت تایید، ثبت نهایی را انجام دهید.</p>
+	</div>
 
-			<article class="order-service order-service--featured">
-				<span class="order-service__badge">
-					<span class="material-symbols-outlined icon icon--filled">star</span>
-					پیشنهاد هوشمند
-				</span>
-				<div class="order-service__top">
-					<div>
-						<h2 class="order-service__title text-headline-md">سرویس سازمانی (Corporate)</h2>
-						<p class="order-service__text text-body-md">بهترین تناسب برای محموله‌های صنعتی با رهگیری دقیق و بیمه کامل.</p>
-						<div class="order-service__tags">
-							<span class="order-service__tag"><span class="material-symbols-outlined icon">schedule</span> تحویل در ۲ روز کاری</span>
-							<span class="order-service__tag"><span class="material-symbols-outlined icon">verified_user</span> بیمه کامل محموله</span>
-						</div>
-					</div>
-					<div class="order-service__price">
-						<span class="order-service__price-new text-headline-lg" data-service-price="corporate">
-							<?php echo esc_html( samabar_format_price( $service_prices['corporate'] ) ); ?>
-						</span>
-					</div>
-				</div>
-				<label class="order-service__select">
-					<span>انتخاب</span>
-					<input type="radio" name="service" value="corporate">
-				</label>
-			</article>
-
-			<div class="order-service-grid">
-				<label class="order-service-card">
-					<div class="order-service-card__head">
-						<h3 class="text-headline-md">سرویس اکسپرس (Express)</h3>
-						<input type="radio" name="service" value="express">
-					</div>
-					<p class="text-body-md">سریع‌ترین روش ارسال برای محموله‌های حساس به زمان.</p>
-					<div class="order-service-card__foot">
-						<span class="text-label-md"><span class="material-symbols-outlined icon">bolt</span> تحویل ۱ روزه</span>
-						<span class="text-headline-md" data-service-price="express">
-							<?php echo esc_html( samabar_format_price( $service_prices['express'] ) ); ?>
-						</span>
-					</div>
-				</label>
-				<label class="order-service-card">
-					<div class="order-service-card__head">
-						<h3 class="text-headline-md">بین‌شهری عادی</h3>
-						<input type="radio" name="service" value="standard">
-					</div>
-					<p class="text-body-md">مقرون‌به‌صرفه‌ترین گزینه برای بارهای استاندارد.</p>
-					<div class="order-service-card__foot">
-						<span class="text-label-md"><span class="material-symbols-outlined icon">local_shipping</span> تحویل ۳–۴ روز کاری</span>
-						<span class="text-headline-md" data-service-price="standard">
-							<?php echo esc_html( samabar_format_price( $service_prices['standard'] ) ); ?>
-						</span>
-					</div>
-				</label>
-			</div>
-		</section>
-
-		<aside class="order-summary">
+	<div class="order-layout order-layout--confirm">
+		<aside class="order-summary order-summary--confirm">
 			<div class="order-summary__head">
-				<h2 class="text-headline-md">مرور نهایی سفارش</h2>
+				<h2 class="text-headline-md">جزئیات سفارش</h2>
 			</div>
 			<div class="order-summary__body">
 				<div class="order-summary__route">
@@ -97,10 +42,6 @@ $service_prices = samabar_get_service_prices();
 					<strong data-review-pickup>—</strong>
 				</div>
 				<div class="order-summary__row">
-					<span>نوع محموله</span>
-					<strong data-review-cargo>—</strong>
-				</div>
-				<div class="order-summary__row">
 					<span>وزن تقریبی</span>
 					<strong data-review-weight>—</strong>
 				</div>
@@ -111,10 +52,6 @@ $service_prices = samabar_get_service_prices();
 				<div class="order-summary__row" data-review-row="description" hidden>
 					<span>توضیحات</span>
 					<strong data-review-description>—</strong>
-				</div>
-				<div class="order-summary__row">
-					<span>سرویس انتخابی</span>
-					<strong class="order-summary__badge" data-review-service>—</strong>
 				</div>
 				<hr class="order-summary__hr">
 				<div class="order-summary__row">
@@ -131,7 +68,7 @@ $service_prices = samabar_get_service_prices();
 				</div>
 				<hr class="order-summary__hr">
 				<div class="order-summary__total">
-					<span class="text-headline-md">مبلغ قابل پرداخت</span>
+					<span class="text-headline-md">کرایه حمل</span>
 					<span class="text-headline-lg" data-review-total>—</span>
 				</div>
 				<button class="btn btn--secondary btn--lg order-summary__submit" type="button" id="order-submit">

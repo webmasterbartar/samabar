@@ -14,50 +14,8 @@ $next_url   = add_query_arg( 'step', '3', $order_base );
 
 	<div class="order-step-intro">
 		<h1 class="order-step-intro__title text-headline-lg">اطلاعات محموله</h1>
-		<p class="order-step-intro__text text-body-md">لطفاً نوع و جزئیات بار خود را مشخص کنید تا بهترین ناوگان را پیشنهاد دهیم.</p>
+		<p class="order-step-intro__text text-body-md">وزن و جزئیات بار را وارد کنید تا کرایه نهایی محاسبه شود.</p>
 	</div>
-
-	<section class="order-section">
-		<span class="order-section__label">نوع محموله <span class="order-section__req">*</span></span>
-		<div class="order-cargo-grid">
-			<label class="order-cargo order-cargo--selected">
-				<input type="radio" name="cargo_type" value="b2b" checked>
-				<span class="order-cargo__icon"><span class="material-symbols-outlined icon icon--filled">business_center</span></span>
-				<span class="order-cargo__body">
-					<span class="order-cargo__title text-headline-md">صنعتی / B2B</span>
-					<span class="order-cargo__text text-body-md">مواد اولیه، ماشین‌آلات، قطعات صنعتی و بارهای عمده تجاری.</span>
-				</span>
-				<span class="material-symbols-outlined icon icon--filled order-cargo__check" aria-hidden="true">check_circle</span>
-			</label>
-			<label class="order-cargo">
-				<input type="radio" name="cargo_type" value="general">
-				<span class="order-cargo__icon"><span class="material-symbols-outlined icon">inventory_2</span></span>
-				<span class="order-cargo__body">
-					<span class="order-cargo__title text-headline-md">عمومی</span>
-					<span class="order-cargo__text text-body-md">کالاهای مصرفی، اثاثیه، و بارهای معمولی.</span>
-				</span>
-				<span class="material-symbols-outlined icon icon--filled order-cargo__check" aria-hidden="true">check_circle</span>
-			</label>
-			<label class="order-cargo">
-				<input type="radio" name="cargo_type" value="fragile">
-				<span class="order-cargo__icon"><span class="material-symbols-outlined icon">wine_bar</span></span>
-				<span class="order-cargo__body">
-					<span class="order-cargo__title text-headline-md">شکستنی</span>
-					<span class="order-cargo__text text-body-md">لوازم شیشه‌ای، الکترونیکی حساس و کالاهای نیازمند احتیاط.</span>
-				</span>
-				<span class="material-symbols-outlined icon icon--filled order-cargo__check" aria-hidden="true">check_circle</span>
-			</label>
-			<label class="order-cargo">
-				<input type="radio" name="cargo_type" value="cold">
-				<span class="order-cargo__icon"><span class="material-symbols-outlined icon">ac_unit</span></span>
-				<span class="order-cargo__body">
-					<span class="order-cargo__title text-headline-md">حساس / یخچالی</span>
-					<span class="order-cargo__text text-body-md">مواد غذایی، دارویی و کالاهای نیازمند کنترل دما.</span>
-				</span>
-				<span class="material-symbols-outlined icon icon--filled order-cargo__check" aria-hidden="true">check_circle</span>
-			</label>
-		</div>
-	</section>
 
 	<section class="order-panel">
 		<label class="order-field">

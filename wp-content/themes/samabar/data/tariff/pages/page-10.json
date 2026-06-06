@@ -1,0 +1,206 @@
+{
+	"meta": {
+		"title": "نرخنامه سال ۱۴۰۳",
+		"effective_date": "1403/03/24",
+		"base_price_month": "خرداد ۱۴۰۳",
+		"hub_city": "بندرعباس",
+		"page": 10,
+		"rows_from": 384,
+		"rows_to": 402,
+		"source_file": "10.png",
+		"parsed_at": "2026-06-03",
+		"note": "ردیف‌های تکمیلی انتهای نرخنامه"
+	},
+	"routes": [
+		{
+			"row": 384,
+			"destination": "همدان",
+			"destination_primary": "همدان",
+			"destination_alias": null,
+			"distance_km": 1426,
+			"base_rial": 510300000,
+			"per_ton_rial": 23200000,
+			"truck_15t_rial": 348000000
+		},
+		{
+			"row": 385,
+			"destination": "هویزه",
+			"destination_primary": "هویزه",
+			"destination_alias": null,
+			"distance_km": 1192,
+			"base_rial": 430700000,
+			"per_ton_rial": 19600000,
+			"truck_15t_rial": 294000000
+		},
+		{
+			"row": 386,
+			"destination": "یزد",
+			"destination_primary": "یزد",
+			"destination_alias": null,
+			"distance_km": 658,
+			"base_rial": 304700000,
+			"per_ton_rial": 13900000,
+			"truck_15t_rial": 208500000
+		},
+		{
+			"row": 387,
+			"destination": "شاهین شهر (اصفهان)",
+			"destination_primary": "شاهین شهر",
+			"destination_alias": "اصفهان",
+			"distance_km": 965,
+			"base_rial": 385500000,
+			"per_ton_rial": 17500000,
+			"truck_15t_rial": 262500000
+		},
+		{
+			"row": 388,
+			"destination": "گمرک خان شیخان",
+			"destination_primary": "گمرک خان شیخان",
+			"destination_alias": null,
+			"distance_km": 1660,
+			"base_rial": 624800000,
+			"per_ton_rial": 28400000,
+			"truck_15t_rial": 426000000
+		},
+		{
+			"row": 389,
+			"destination": "باوی (خوزستان)",
+			"destination_primary": "باوی",
+			"destination_alias": "خوزستان",
+			"distance_km": 1140,
+			"base_rial": 424100000,
+			"per_ton_rial": 19300000,
+			"truck_15t_rial": 289500000
+		},
+		{
+			"row": 390,
+			"destination": "اسدآباد همدان",
+			"destination_primary": "اسدآباد همدان",
+			"destination_alias": null,
+			"distance_km": 1470,
+			"base_rial": 517000000,
+			"per_ton_rial": 23500000,
+			"truck_15t_rial": 352500000
+		},
+		{
+			"row": 391,
+			"destination": "کنگاور کرمانشاه",
+			"destination_primary": "کنگاور کرمانشاه",
+			"destination_alias": null,
+			"distance_km": 1390,
+			"base_rial": 521300000,
+			"per_ton_rial": 23700000,
+			"truck_15t_rial": 355500000
+		},
+		{
+			"row": 392,
+			"destination": "صحنه کرمانشاه",
+			"destination_primary": "صحنه کرمانشاه",
+			"destination_alias": null,
+			"distance_km": 1420,
+			"base_rial": 525500000,
+			"per_ton_rial": 23900000,
+			"truck_15t_rial": 358500000
+		},
+		{
+			"row": 393,
+			"destination": "میلک زابل",
+			"destination_primary": "میلک زابل",
+			"destination_alias": null,
+			"distance_km": 921,
+			"base_rial": 440400000,
+			"per_ton_rial": 20000000,
+			"truck_15t_rial": 300000000
+		},
+		{
+			"row": 394,
+			"destination": "بهاباد یزد",
+			"destination_primary": "بهاباد یزد",
+			"destination_alias": null,
+			"distance_km": 741,
+			"base_rial": 309600000,
+			"per_ton_rial": 14100000,
+			"truck_15t_rial": 211500000
+		},
+		{
+			"row": 395,
+			"destination": "بشاگرد",
+			"destination_primary": "بشاگرد",
+			"destination_alias": null,
+			"distance_km": 260,
+			"base_rial": 242400000,
+			"per_ton_rial": 11000000,
+			"truck_15t_rial": 165000000
+		},
+		{
+			"row": 396,
+			"destination": "فنوج",
+			"destination_primary": "فنوج",
+			"destination_alias": null,
+			"distance_km": 420,
+			"base_rial": 336500000,
+			"per_ton_rial": 15300000,
+			"truck_15t_rial": 229500000
+		},
+		{
+			"row": 397,
+			"destination": "رویدر هرمزگان",
+			"destination_primary": "رویدر هرمزگان",
+			"destination_alias": null,
+			"distance_km": 139,
+			"base_rial": 170500000,
+			"per_ton_rial": 7800000,
+			"truck_15t_rial": 117000000
+		},
+		{
+			"row": 398,
+			"destination": "هشتبندی هرمزگان",
+			"destination_primary": "هشتبندی هرمزگان",
+			"destination_alias": null,
+			"distance_km": 161,
+			"base_rial": 187400000,
+			"per_ton_rial": 8500000,
+			"truck_15t_rial": 127500000
+		},
+		{
+			"row": 399,
+			"destination": "تویسرکان (همدان)",
+			"destination_primary": "تویسرکان",
+			"destination_alias": "همدان",
+			"distance_km": 1439,
+			"base_rial": 514100000,
+			"per_ton_rial": 23400000,
+			"truck_15t_rial": 351000000
+		},
+		{
+			"row": 400,
+			"destination": "ورزنه (اصفهان)",
+			"destination_primary": "ورزنه",
+			"destination_alias": "اصفهان",
+			"distance_km": 971,
+			"base_rial": 383800000,
+			"per_ton_rial": 17400000,
+			"truck_15t_rial": 261000000
+		},
+		{
+			"row": 401,
+			"destination": "جرقویه (اصفهان)",
+			"destination_primary": "جرقویه",
+			"destination_alias": "اصفهان",
+			"distance_km": 971,
+			"base_rial": 383800000,
+			"per_ton_rial": 17400000,
+			"truck_15t_rial": 261000000
+		},
+		{
+			"row": 402,
+			"destination": "گل بهار مشهد",
+			"destination_primary": "گل بهار مشهد",
+			"destination_alias": null,
+			"distance_km": 1383,
+			"base_rial": 483600000,
+			"per_ton_rial": 22000000,
+			"truck_15t_rial": 330000000
+		}
+	]
+}

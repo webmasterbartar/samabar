@@ -1,15 +1,20 @@
 <?php
 /**
- * Order step 1: Route.
+ * Single-page order form.
  *
  * @package Samabar
  */
 
-$order_base = samabar_get_order_url();
-$hub_city   = samabar_get_hub_city();
+$hub_city        = samabar_get_hub_city();
+$tracking_base   = samabar_get_tracking_url();
+$dashboard_base  = samabar_get_dashboard_url();
+$home_url        = home_url( '/' );
 ?>
-<form class="order-form" id="order-form-step-1" action="<?php echo esc_url( add_query_arg( 'step', '2', $order_base ) ); ?>" method="get">
-	<input type="hidden" name="step" value="2">
+<form class="order-form" id="order-form" novalidate>
+	<div class="order-step-intro">
+		<h1 class="order-step-intro__title text-headline-lg">ثبت سفارش حمل بار</h1>
+		<p class="order-step-intro__text text-body-md">مسیر، مشخصات بار و اطلاعات تماس را در همین صفحه وارد کنید. کرایه بر اساس نرخنامه به‌صورت خودکار محاسبه می‌شود.</p>
+	</div>
 
 	<div class="order-layout">
 		<div class="order-layout__main">
@@ -19,8 +24,8 @@ $hub_city   = samabar_get_hub_city();
 					<span>
 						<?php
 						printf(
-							/* translators: 1: hub city, 2: hub city, 3: hub city */
-							esc_html__( 'بارگیری از %1$s به سراسر کشور، یا از هر شهر به %1$s. یک طرف مسیر همیشه %1$s است — مثلاً %1$s ← تهران یا مشهد ← %1$s. مسیر بین دو شهر دیگر (تهران ← یزد) پذیرفته نمی‌شود.', 'samabar' ),
+							/* translators: %s: hub city */
+							esc_html__( 'بارگیری از %1$s به سراسر کشور، یا از هر شهر به %1$s. یک طرف مسیر همیشه %1$s است.', 'samabar' ),
 							esc_html( $hub_city )
 						);
 						?>
@@ -30,6 +35,7 @@ $hub_city   = samabar_get_hub_city();
 					<span class="material-symbols-outlined icon" aria-hidden="true">error</span>
 					<span data-route-notice-text></span>
 				</p>
+
 				<article class="order-card order-route-card">
 					<div class="order-route-grid">
 						<section class="order-route-col order-route-col--origin">
@@ -98,6 +104,36 @@ $hub_city   = samabar_get_hub_city();
 
 				<article class="order-card">
 					<div class="order-card__head">
+						<span class="order-card__icon">
+							<span class="material-symbols-outlined icon icon--filled">inventory_2</span>
+						</span>
+						<h2 class="order-card__title text-headline-md">مشخصات محموله</h2>
+					</div>
+					<div class="order-panel order-panel--flat">
+						<label class="order-field">
+							<span class="order-field__label">وزن تقریبی (کیلوگرم) <span class="order-section__req">*</span></span>
+							<div class="order-field__suffix">
+								<input class="order-field__input order-field__input--plain" type="number" name="weight" id="order-weight" min="1" placeholder="مثلاً: ۱۵۰۰" required>
+								<span class="order-field__unit">KG</span>
+							</div>
+						</label>
+						<div class="order-field">
+							<span class="order-field__label">ابعاد تقریبی (اختیاری)</span>
+							<div class="order-dims">
+								<input class="order-field__input order-field__input--plain" type="number" name="dim_length" id="order-dim-length" placeholder="طول (m)" step="0.1">
+								<input class="order-field__input order-field__input--plain" type="number" name="dim_width" id="order-dim-width" placeholder="عرض (m)" step="0.1">
+								<input class="order-field__input order-field__input--plain" type="number" name="dim_height" id="order-dim-height" placeholder="ارتفاع (m)" step="0.1">
+							</div>
+						</div>
+						<label class="order-field">
+							<span class="order-field__label">توضیحات تکمیلی (اختیاری)</span>
+							<textarea class="order-field__textarea" name="description" id="order-description" rows="3" placeholder="هرگونه توضیحاتی که راننده باید در مورد بار بداند..."></textarea>
+						</label>
+					</div>
+				</article>
+
+				<article class="order-card">
+					<div class="order-card__head">
 						<span class="order-card__icon order-card__icon--contact">
 							<span class="material-symbols-outlined icon icon--filled">person</span>
 						</span>
@@ -122,7 +158,7 @@ $hub_city   = samabar_get_hub_city();
 			</div>
 		</div>
 
-		<aside class="order-layout__side">
+		<aside class="order-layout__side" data-order-summary>
 			<div class="order-route-status order-card">
 				<span class="material-symbols-outlined icon order-route-status__icon">route</span>
 				<div class="order-route-status__body">
@@ -204,13 +240,87 @@ $hub_city   = samabar_get_hub_city();
 					</div>
 				</div>
 			</div>
+
+			<div class="order-summary order-summary--sidebar">
+				<div class="order-summary__head">
+					<h2 class="text-headline-md">خلاصه سفارش</h2>
+				</div>
+				<div class="order-summary__body">
+					<div class="order-summary__route">
+						<div class="order-summary__route-line" aria-hidden="true"></div>
+						<div class="order-summary__route-items">
+							<div>
+								<span class="order-summary__meta">مبدا</span>
+								<p class="order-summary__value" data-review-origin>—</p>
+							</div>
+							<div>
+								<span class="order-summary__meta">مقصد</span>
+								<p class="order-summary__value" data-review-destination>—</p>
+							</div>
+						</div>
+					</div>
+					<hr class="order-summary__hr">
+					<div class="order-summary__row">
+						<span>زمان بارگیری</span>
+						<strong data-review-pickup>—</strong>
+					</div>
+					<div class="order-summary__row">
+						<span>وزن تقریبی</span>
+						<strong data-review-weight>—</strong>
+					</div>
+					<div class="order-summary__row" data-review-row="dims" hidden>
+						<span>ابعاد</span>
+						<strong data-review-dims>—</strong>
+					</div>
+					<div class="order-summary__row" data-review-row="description" hidden>
+						<span>توضیحات</span>
+						<strong data-review-description>—</strong>
+					</div>
+					<hr class="order-summary__hr">
+					<div class="order-summary__row">
+						<span>نام تماس</span>
+						<strong data-review-name>—</strong>
+					</div>
+					<div class="order-summary__row">
+						<span>موبایل</span>
+						<strong data-review-phone dir="ltr">—</strong>
+					</div>
+					<div class="order-summary__row" data-review-row="company" hidden>
+						<span>شرکت</span>
+						<strong data-review-company>—</strong>
+					</div>
+					<hr class="order-summary__hr">
+					<div class="order-summary__total">
+						<span class="text-headline-md">کرایه حمل</span>
+						<span class="text-headline-lg order-summary__freight" data-review-total>
+							<span class="order-summary__freight-mask">＊ ＊ ＊ ＊ ＊</span>
+						</span>
+					</div>
+					<button class="btn btn--secondary btn--lg order-summary__submit" type="submit" id="order-submit">
+						تایید و ثبت سفارش
+						<span class="material-symbols-outlined icon icon--filled">check_circle</span>
+					</button>
+					<div class="order-summary__trust">
+						<div><span class="material-symbols-outlined icon">shield</span><span>بیمه بار</span></div>
+						<div><span class="material-symbols-outlined icon">support_agent</span><span>پشتیبانی تلفنی</span></div>
+						<div><span class="material-symbols-outlined icon">cancel</span><span>لغو آسان</span></div>
+					</div>
+				</div>
+			</div>
 		</aside>
 	</div>
-
-	<div class="order-actions order-actions--end">
-		<button class="btn btn--secondary btn--lg" type="submit">
-			تایید و مرحله بعد
-			<span class="material-symbols-outlined icon">arrow_back</span>
-		</button>
-	</div>
 </form>
+
+<div class="order-success" id="order-success" hidden>
+	<div class="order-success__inner">
+		<span class="material-symbols-outlined icon icon--filled order-success__icon">check_circle</span>
+		<h2 class="text-headline-lg">سفارش شما ثبت شد</h2>
+		<p class="text-body-md order-success__number" data-order-number hidden></p>
+		<p class="text-body-md">کارشناسان ما به زودی با شما تماس می‌گیرند.</p>
+		<div class="order-success__actions">
+			<a class="btn btn--primary" data-order-dashboard-link href="<?php echo esc_url( $dashboard_base ); ?>">رفتن به داشبورد</a>
+			<a class="btn btn--secondary" data-order-track-link href="<?php echo esc_url( $tracking_base ); ?>">پیگیری سفارش</a>
+			<a class="btn btn--outline" href="<?php echo esc_url( $home_url ); ?>">بازگشت به صفحه اصلی</a>
+		</div>
+	</div>
+</div>

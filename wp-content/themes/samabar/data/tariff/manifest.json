@@ -1,0 +1,109 @@
+{
+	"status": "complete",
+	"title": "نرخنامه سال ۱۴۰۳",
+	"effective_date": "1403/03/24",
+	"base_price_month": "خرداد ۱۴۰۳",
+	"hub_city": "بندرعباس",
+	"total_routes_collected": 402,
+	"row_gaps": [],
+	"pages": [
+		{
+			"file": "01.png",
+			"data": "pages/page-01.json",
+			"page": 1,
+			"rows": "1-33",
+			"count": 33,
+			"parsed": true
+		},
+		{
+			"file": "02.png",
+			"data": "pages/page-02.json",
+			"page": 2,
+			"rows": "34-68",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "03.png",
+			"data": "pages/page-03.json",
+			"page": 3,
+			"rows": "69-103",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "04.png",
+			"data": "pages/page-04.json",
+			"page": 4,
+			"rows": "104-138",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "05.png",
+			"data": "pages/page-05.json",
+			"page": 5,
+			"rows": "139-173",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "06.png",
+			"data": "pages/page-06.json",
+			"page": 6,
+			"rows": "174-208",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "07.png",
+			"data": "pages/page-07.json",
+			"page": 7,
+			"rows": "209-243",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "08.png",
+			"data": "pages/page-08.json",
+			"page": 8,
+			"rows": "244-278",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "09.png",
+			"data": "pages/page-09.json",
+			"page": 9,
+			"rows": "279-313",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "10.png",
+			"data": "pages/page-10.json",
+			"page": 10,
+			"rows": "384-402",
+			"count": 19,
+			"parsed": true
+		},
+		{
+			"file": "11.png",
+			"data": "pages/page-11.json",
+			"page": 11,
+			"rows": "314-348",
+			"count": 35,
+			"parsed": true
+		},
+		{
+			"file": "12.png",
+			"data": "pages/page-12.json",
+			"page": 12,
+			"rows": "349-383",
+			"count": 35,
+			"parsed": true
+		}
+	],
+	"merged_file": "collected-rates.json",
+	"imported_at": null
+}

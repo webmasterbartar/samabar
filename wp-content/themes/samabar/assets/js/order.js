@@ -3,32 +3,31 @@
 
 	const STORAGE_KEY = 'samabar_order';
 	const main = document.querySelector('.site-main--order');
-	if (!main) {
+	const form = document.getElementById('order-form');
+
+	if (!main || !form) {
 		return;
 	}
 
-	const step = parseInt(main.dataset.orderStep || '1', 10);
 	const config = window.samabarOrder || {};
-	const baseUrl = config.baseUrl || '';
+	const summary = form.querySelector('[data-order-summary]');
+	const success = document.getElementById('order-success');
+	const submitBtn = document.getElementById('order-submit');
+	const emptyFreightHtml = '<span class="order-summary__freight-mask">＊ ＊ ＊ ＊ ＊</span>';
 
-	const cargoLabels = config.cargoLabels || {
-		b2b: 'صنعتی / B2B',
-		general: 'عمومی',
-		fragile: 'شکستنی',
-		cold: 'حساس / یخچالی',
-	};
+	let freightReady = false;
+	let freightTimer = null;
 
-	const serviceLabels = config.serviceLabels || {
-		corporate: 'سازمانی',
-		express: 'اکسپرس',
-		standard: 'بین‌شهری عادی',
-	};
-
-	const servicePrices = config.servicePrices || {
-		corporate: 42500000,
-		express: 55000000,
-		standard: 30000000,
-	};
+	function requestFreight(data) {
+		if (!window.samabarTariff) {
+			return Promise.reject(new Error('سیستم محاسبه کرایه در دسترس نیست.'));
+		}
+		return window.samabarTariff.requestFreight(
+			data.origin_city || data.origin,
+			data.destination_city || data.destination,
+			parseInt(data.weight, 10)
+		);
+	}
 
 	function loadData() {
 		try {
@@ -49,71 +48,88 @@
 		return data;
 	}
 
-	function mergeFormFields(form, extra) {
-		const data = loadData();
-		new FormData(form).forEach(function (value, key) {
-			if (key === 'step') {
-				return;
-			}
-			data[key] = value;
-		});
-		if (extra) {
-			Object.assign(data, extra);
-		}
-		saveData(data);
-		return data;
+	function formatAddress(city, address, detail) {
+		return [city, address, detail].filter(function (part) {
+			return part && String(part).trim();
+		}).join(' — ');
 	}
 
-	function populateForm(form, data) {
-		Object.keys(data).forEach(function (key) {
+	function collectRouteFromForm() {
+		return {
+			origin_city: form.querySelector('#order-origin-city')?.value.trim() || '',
+			origin_address: form.querySelector('#order-origin-address')?.value.trim() || '',
+			destination_city: form.querySelector('#order-destination-city')?.value.trim() || '',
+			destination_address: form.querySelector('#order-destination-address')?.value.trim() || '',
+		};
+	}
+
+	function withRouteSummary(route) {
+		return Object.assign({}, route, {
+			origin: formatAddress(route.origin_city, route.origin_address),
+			destination: formatAddress(route.destination_city, route.destination_address),
+		});
+	}
+
+	function collectContactFields() {
+		return {
+			full_name: form.querySelector('#order-full-name')?.value.trim() || '',
+			phone: normalizePhone(form.querySelector('#order-phone')?.value || ''),
+			company: form.querySelector('#order-company')?.value.trim() || '',
+		};
+	}
+
+	function collectFormData() {
+		return Object.assign(
+			withRouteSummary(collectRouteFromForm()),
+			collectContactFields(),
+			{
+				pickup_date: form.querySelector('#order-pickup-date')?.value || '',
+				weight: form.querySelector('#order-weight')?.value.trim() || '',
+				dim_length: form.querySelector('#order-dim-length')?.value.trim() || '',
+				dim_width: form.querySelector('#order-dim-width')?.value.trim() || '',
+				dim_height: form.querySelector('#order-dim-height')?.value.trim() || '',
+				description: form.querySelector('#order-description')?.value.trim() || '',
+				service: 'corporate',
+			}
+		);
+	}
+
+	function populateForm(data) {
+		const prepared = Object.assign({}, data);
+
+		if (window.samabarRoute && window.samabarRoute.resolveCity) {
+			if (prepared.origin_city) {
+				prepared.origin_city = window.samabarRoute.resolveCity(prepared.origin_city) || prepared.origin_city;
+			}
+			if (prepared.destination_city) {
+				prepared.destination_city =
+					window.samabarRoute.resolveCity(prepared.destination_city) || prepared.destination_city;
+			}
+		}
+
+		Object.keys(prepared).forEach(function (key) {
 			const fields = form.elements.namedItem(key);
-			if (!fields) {
+			if (!fields || fields.type === 'radio') {
 				return;
 			}
-			if (fields instanceof RadioNodeList || (fields.length && fields[0]?.type === 'radio')) {
-				const value = data[key];
-				const radio = form.querySelector('[name="' + key + '"][value="' + value + '"]');
-				if (radio) {
-					radio.checked = true;
-				}
-			} else if (fields.type === 'radio') {
-				const radio = form.querySelector('[name="' + key + '"][value="' + data[key] + '"]');
-				if (radio) {
-					radio.checked = true;
-				}
-			} else {
-				fields.value = data[key];
-			}
+			fields.value = prepared[key];
 		});
 	}
 
-	function syncCargoCards(form) {
-		if (!form) {
-			return;
+	function migrateLegacyRoute(data) {
+		if (data.origin && !data.origin_city) {
+			data.origin_city = data.origin;
 		}
-		form.querySelectorAll('.order-cargo').forEach(function (card) {
-			const input = card.querySelector('input[type="radio"]');
-			card.classList.toggle('order-cargo--selected', !!(input && input.checked));
-		});
-	}
-
-	function initCargoCards(form) {
-		if (!form) {
-			return;
+		if (data.destination && !data.destination_city) {
+			data.destination_city = data.destination;
 		}
-		form.querySelectorAll('.order-cargo input[type="radio"]').forEach(function (input) {
-			input.addEventListener('change', function () {
-				syncCargoCards(form);
-			});
-		});
-		syncCargoCards(form);
-	}
-
-	function stepUrl(num) {
-		if (num <= 1) {
-			return baseUrl;
+		if (data.origin_city && data.origin_address) {
+			data.origin = formatAddress(data.origin_city, data.origin_address);
 		}
-		return baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'step=' + num;
+		if (data.destination_city && data.destination_address) {
+			data.destination = formatAddress(data.destination_city, data.destination_address);
+		}
+		return data;
 	}
 
 	function normalizePhone(phone) {
@@ -131,36 +147,74 @@
 		return /^09\d{9}$/.test(normalizePhone(phone));
 	}
 
-	function persistCustomerSession(contact) {
-		if (!window.samabarCustomer || !contact.phone || !isValidPhone(contact.phone)) {
-			return;
+	function isAllowedRoute(originCity, destinationCity) {
+		if (!window.samabarRoute) {
+			return true;
 		}
-		window.samabarCustomer.save({
-			phone: contact.phone,
-			full_name: contact.full_name || '',
-			company: contact.company || '',
-		});
+		return window.samabarRoute.validateRoute(originCity, destinationCity).valid;
 	}
 
-	function hasValidContact(data) {
-		return !!(data.full_name && data.phone && isValidPhone(data.phone));
+	function showRouteNotice(check) {
+		const notice = form.querySelector('[data-route-notice]');
+		const statusWrap = document.querySelector('.order-route-status');
+		const statusText = document.querySelector('[data-map-status]');
+
+		if (notice) {
+			notice.hidden = check.valid;
+			if (!check.valid) {
+				notice.querySelector('[data-route-notice-text]').textContent = check.message;
+			}
+		}
+
+		if (statusWrap && statusText) {
+			statusWrap.classList.toggle('is-invalid', !check.valid);
+			statusWrap.classList.toggle('is-valid', check.valid);
+			if (!check.valid) {
+				statusText.textContent = check.message;
+			}
+		}
+
+		form.querySelector('#order-origin-city')?.classList.toggle('route-field-error', !check.valid);
+		form.querySelector('#order-destination-city')?.classList.toggle('route-field-error', !check.valid);
 	}
 
-	function collectContactFields(wrapper) {
-		return {
-			full_name: wrapper.querySelector('#order-full-name')?.value.trim() || '',
-			phone: normalizePhone(wrapper.querySelector('#order-phone')?.value || ''),
-			company: wrapper.querySelector('#order-company')?.value.trim() || '',
-		};
+	function validateRoute() {
+		const route = collectRouteFromForm();
+
+		if (!route.origin_city || !route.origin_address || !route.destination_city || !route.destination_address) {
+			window.alert('لطفاً شهر و آدرس دقیق مبدا و مقصد را کامل وارد کنید.');
+			if (!route.origin_city) {
+				form.querySelector('#order-origin-city')?.focus();
+			} else if (!route.origin_address) {
+				form.querySelector('#order-origin-address')?.focus();
+			} else if (!route.destination_city) {
+				form.querySelector('#order-destination-city')?.focus();
+			} else {
+				form.querySelector('#order-destination-address')?.focus();
+			}
+			return false;
+		}
+
+		if (window.samabarRoute) {
+			const check = window.samabarRoute.validateRoute(route.origin_city, route.destination_city);
+			showRouteNotice(check);
+			if (!check.valid) {
+				window.alert(check.message);
+				form.querySelector('#order-destination-city')?.focus();
+				return false;
+			}
+		}
+
+		return true;
 	}
 
-	function validateContact(wrapper) {
-		const contact = collectContactFields(wrapper);
-		const phoneInput = wrapper.querySelector('#order-phone');
+	function validateContact() {
+		const contact = collectContactFields();
+		const phoneInput = form.querySelector('#order-phone');
 
 		if (!contact.full_name) {
 			window.alert('لطفاً نام و نام خانوادگی را وارد کنید.');
-			wrapper.querySelector('#order-full-name')?.focus();
+			form.querySelector('#order-full-name')?.focus();
 			return false;
 		}
 
@@ -177,122 +231,11 @@
 		return true;
 	}
 
-	function validateRoute(form) {
-		const route = collectRouteFromForm(form);
-		if (!route.origin_city || !route.origin_address || !route.destination_city || !route.destination_address) {
-			window.alert('لطفاً شهر و آدرس دقیق مبدا و مقصد را کامل وارد کنید.');
-			if (!route.origin_city) {
-				form.querySelector('#order-origin-city')?.focus();
-			} else if (!route.origin_address) {
-				form.querySelector('#order-origin-address')?.focus();
-			} else if (!route.destination_city) {
-				form.querySelector('#order-destination-city')?.focus();
-			} else {
-				form.querySelector('#order-destination-address')?.focus();
-			}
-			return false;
+	function formatPrice(rial) {
+		if (window.samabarMoney) {
+			return window.samabarMoney.format(rial);
 		}
-		return true;
-	}
-
-	function collectStep1Data(form) {
-		return Object.assign(
-			withRouteSummary(collectRouteFromForm(form)),
-			collectContactFields(form),
-			{
-				pickup_date: form.querySelector('#order-pickup-date')?.value || '',
-			}
-		);
-	}
-
-	function initContactFields(wrapper, data) {
-		const fields = ['full_name', 'phone', 'company'];
-		fields.forEach(function (key) {
-			const input = wrapper.querySelector('[name="' + key + '"]');
-			if (input && data[key]) {
-				input.value = data[key];
-			}
-		});
-
-		wrapper.querySelectorAll('.order-contact__input').forEach(function (input) {
-			input.addEventListener('input', function () {
-				const contact = collectContactFields(wrapper);
-				mergeData(contact);
-				persistCustomerSession(contact);
-			});
-		});
-	}
-
-	function initRouteFields(form) {
-		const selectors = [
-			'#order-origin-city',
-			'#order-origin-address',
-			'#order-origin-detail',
-			'#order-destination-city',
-			'#order-destination-address',
-			'#order-destination-detail',
-		];
-
-		selectors.forEach(function (selector) {
-			const field = form.querySelector(selector);
-			if (!field) {
-				return;
-			}
-			field.addEventListener('input', function () {
-				mergeData(withRouteSummary(collectRouteFromForm(form)));
-			});
-		});
-	}
-
-	function formatAddress(city, address, detail) {
-		return [city, address, detail].filter(function (part) {
-			return part && String(part).trim();
-		}).join(' — ');
-	}
-
-	function collectRouteFromForm(form) {
-		return {
-			origin_city: form.querySelector('#order-origin-city')?.value.trim() || '',
-			origin_address: form.querySelector('#order-origin-address')?.value.trim() || '',
-			origin_detail: form.querySelector('#order-origin-detail')?.value.trim() || '',
-			destination_city: form.querySelector('#order-destination-city')?.value.trim() || '',
-			destination_address: form.querySelector('#order-destination-address')?.value.trim() || '',
-			destination_detail: form.querySelector('#order-destination-detail')?.value.trim() || '',
-		};
-	}
-
-	function withRouteSummary(route) {
-		return Object.assign({}, route, {
-			origin: formatAddress(route.origin_city, route.origin_address, route.origin_detail),
-			destination: formatAddress(route.destination_city, route.destination_address, route.destination_detail),
-		});
-	}
-
-	function hasValidRoute(data) {
-		if (data.origin_city && data.origin_address && data.destination_city && data.destination_address) {
-			return true;
-		}
-		return !!(data.origin && data.destination);
-	}
-
-	function migrateLegacyRoute(data) {
-		if (data.origin && !data.origin_city) {
-			data.origin_city = data.origin;
-		}
-		if (data.destination && !data.destination_city) {
-			data.destination_city = data.destination;
-		}
-		if (data.origin_city && data.origin_address) {
-			data.origin = formatAddress(data.origin_city, data.origin_address, data.origin_detail);
-		}
-		if (data.destination_city && data.destination_address) {
-			data.destination = formatAddress(data.destination_city, data.destination_address, data.destination_detail);
-		}
-		return data;
-	}
-
-	function formatPrice(num) {
-		return Number(num || 0).toLocaleString('fa-IR') + ' ﷼';
+		return Math.round(Number(rial || 0) / 10).toLocaleString('fa-IR') + ' تومان';
 	}
 
 	function formatPickupDisplay(value) {
@@ -325,9 +268,12 @@
 		return parts.join(' × ') + ' m';
 	}
 
-	function setReviewRow(wrapper, rowKey, value) {
-		const row = wrapper.querySelector('[data-review-row="' + rowKey + '"]');
-		const target = wrapper.querySelector('[data-review-' + rowKey + ']');
+	function setReviewRow(rowKey, value) {
+		if (!summary) {
+			return;
+		}
+		const row = summary.querySelector('[data-review-row="' + rowKey + '"]');
+		const target = summary.querySelector('[data-review-' + rowKey + ']');
 
 		if (!row || !target) {
 			return;
@@ -342,270 +288,307 @@
 		}
 	}
 
-	function syncServiceCards(wrapper) {
-		wrapper.querySelectorAll('.order-service, .order-service-card').forEach(function (card) {
-			const input = card.querySelector('input[name="service"]');
-			card.classList.toggle('is-selected', !!(input && input.checked));
-		});
+	function setFreightDisplay(html) {
+		const totalEl = summary?.querySelector('[data-review-total]');
+		if (totalEl) {
+			totalEl.innerHTML = html;
+		}
 	}
 
-	function selectService(wrapper, serviceKey) {
-		const allowed = Object.keys(servicePrices);
-		const service = allowed.indexOf(serviceKey) >= 0 ? serviceKey : 'corporate';
-		const radio = wrapper.querySelector('[name="service"][value="' + service + '"]');
-		if (radio) {
-			radio.checked = true;
-		}
-		syncServiceCards(wrapper);
-		return service;
+	function canCalculateFreight(data) {
+		return (
+			data.origin_city &&
+			data.destination_city &&
+			isAllowedRoute(data.origin_city, data.destination_city) &&
+			parseInt(data.weight, 10) >= 1
+		);
 	}
 
-	function initMapStatus() {
-		const status = document.querySelector('[data-map-status]');
-		const fields = [
-			'#order-origin-city',
-			'#order-origin-address',
-			'#order-destination-city',
-			'#order-destination-address',
-		].map(function (selector) {
-			return document.querySelector(selector);
-		});
+	function syncSummary() {
+		const data = collectFormData();
+		mergeData(data);
 
-		if (!status || fields.some(function (field) { return !field; })) {
-			return;
+		if (!summary) {
+			return data;
 		}
 
-		function update() {
-			const route = withRouteSummary(collectRouteFromForm(document.getElementById('order-form-step-1')));
-			if (route.origin && route.destination) {
-				status.textContent = route.origin + ' ← ' + route.destination;
+		const originEl = summary.querySelector('[data-review-origin]');
+		const destEl = summary.querySelector('[data-review-destination]');
+		const pickupEl = summary.querySelector('[data-review-pickup]');
+		const nameEl = summary.querySelector('[data-review-name]');
+		const phoneEl = summary.querySelector('[data-review-phone]');
+		const weightEl = summary.querySelector('[data-review-weight]');
+		const statusText = document.querySelector('[data-map-status]');
+
+		if (originEl) {
+			originEl.textContent = data.origin || '—';
+		}
+		if (destEl) {
+			destEl.textContent = data.destination || '—';
+		}
+		if (pickupEl) {
+			pickupEl.textContent = formatPickupDisplay(data.pickup_date);
+		}
+		if (nameEl) {
+			nameEl.textContent = data.full_name || '—';
+		}
+		if (phoneEl) {
+			phoneEl.textContent = data.phone || '—';
+		}
+		if (weightEl) {
+			weightEl.textContent = data.weight
+				? parseInt(data.weight, 10).toLocaleString('fa-IR') + ' کیلوگرم'
+				: '—';
+		}
+
+		setReviewRow('dims', formatDimensions(data));
+		setReviewRow('description', data.description || '');
+		setReviewRow('company', data.company || '');
+
+		if (statusText) {
+			if (data.origin_city && data.destination_city && window.samabarRoute) {
+				const check = window.samabarRoute.validateRoute(data.origin_city, data.destination_city);
+				showRouteNotice(check);
+				if (check.valid && data.origin && data.destination) {
+					statusText.textContent = data.origin + ' ← ' + data.destination;
+				} else if (!check.valid) {
+					statusText.textContent = check.message;
+				}
+			} else if (data.origin || data.destination) {
+				statusText.textContent = (data.origin || '…') + ' ← ' + (data.destination || '…');
 			} else {
-				status.textContent = 'مسیر هنوز مشخص نشده است';
+				statusText.textContent = 'مسیر هنوز مشخص نشده است';
 			}
 		}
 
-		fields.forEach(function (field) {
-			field.addEventListener('input', update);
-		});
-		update();
+		return data;
 	}
 
-	function initStep1() {
-		const form = document.getElementById('order-form-step-1');
-		if (!form) {
+	function refreshFreight() {
+		const data = syncSummary();
+
+		if (!canCalculateFreight(data)) {
+			freightReady = false;
+			setFreightDisplay(emptyFreightHtml);
+			if (submitBtn) {
+				submitBtn.disabled = false;
+			}
+			return Promise.resolve();
+		}
+
+		freightReady = false;
+		setFreightDisplay('در حال محاسبه...');
+		if (submitBtn) {
+			submitBtn.disabled = true;
+		}
+
+		return requestFreight(data)
+			.then(function (freight) {
+				setFreightDisplay(formatPrice(freight.amount));
+				mergeData({ total_price: freight.amount });
+				freightReady = true;
+				if (submitBtn) {
+					submitBtn.disabled = false;
+				}
+			})
+			.catch(function (err) {
+				freightReady = false;
+				setFreightDisplay('—');
+				showRouteNotice({
+					valid: false,
+					message: err.message || 'محاسبه کرایه ممکن نیست.',
+				});
+				if (submitBtn) {
+					submitBtn.disabled = false;
+				}
+			});
+	}
+
+	function scheduleFreightRefresh() {
+		clearTimeout(freightTimer);
+		freightTimer = setTimeout(refreshFreight, 350);
+	}
+
+	function persistCustomerSession(contact) {
+		if (!window.samabarCustomer || !contact.phone || !isValidPhone(contact.phone)) {
+			return;
+		}
+		window.samabarCustomer.save({
+			phone: contact.phone,
+			full_name: contact.full_name || '',
+			company: contact.company || '',
+		});
+	}
+
+	function submitOrder() {
+		const data = mergeData(collectFormData());
+
+		if (!freightReady) {
+			return refreshFreight().then(function () {
+				if (freightReady) {
+					submitOrder();
+				}
+			});
+		}
+
+		if (!submitBtn || !success) {
 			return;
 		}
 
+		submitBtn.disabled = true;
+		submitBtn.classList.add('is-loading');
+
+		fetch(config.restUrl, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-WP-Nonce': config.nonce,
+			},
+			body: JSON.stringify(data),
+		})
+			.then(function (response) {
+				return response.json().then(function (body) {
+					if (!response.ok) {
+						throw new Error(body.message || 'خطا در ثبت سفارش');
+					}
+					return body;
+				});
+			})
+			.then(function (result) {
+				sessionStorage.removeItem(STORAGE_KEY);
+				if (result.order_number && data.phone && window.samabarCustomer) {
+					window.samabarCustomer.save({
+						phone: data.phone,
+						full_name: data.full_name || '',
+						company: data.company || '',
+					});
+				}
+
+				const numberEl = success.querySelector('[data-order-number]');
+				const trackLink = success.querySelector('[data-order-track-link]');
+				const dashboardLink = success.querySelector('[data-order-dashboard-link]');
+
+				if (numberEl && result.order_number) {
+					numberEl.textContent = 'شماره پیگیری: ' + result.order_number;
+					numberEl.hidden = false;
+				}
+				if (trackLink && result.order_number) {
+					const url = new URL(config.trackingUrl || '/peigiry/', window.location.origin);
+					url.searchParams.set('track', result.order_number);
+					trackLink.href = url.toString();
+				}
+				if (dashboardLink && data.phone) {
+					const url = new URL(config.dashboardUrl || '/panel/', window.location.origin);
+					url.searchParams.set('phone', data.phone);
+					dashboardLink.href = url.toString();
+				}
+
+				form.hidden = true;
+				success.hidden = false;
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			})
+			.catch(function (err) {
+				submitBtn.disabled = false;
+				submitBtn.classList.remove('is-loading');
+				window.alert(err.message || 'ثبت سفارش انجام نشد. لطفاً دوباره تلاش کنید.');
+			});
+	}
+
+	function initFromQuery() {
 		const data = migrateLegacyRoute(loadData());
 		const params = new URLSearchParams(window.location.search);
+
 		if (params.get('origin')) {
-			data.origin_city = params.get('origin');
+			const origin = params.get('origin');
+			data.origin_city = window.samabarRoute?.resolveCity(origin) || origin;
 		}
 		if (params.get('destination')) {
-			data.destination_city = params.get('destination');
+			const destination = params.get('destination');
+			data.destination_city = window.samabarRoute?.resolveCity(destination) || destination;
+		}
+		if (params.get('weight')) {
+			data.weight = params.get('weight');
 		}
 		if (params.get('pickup_date')) {
 			data.pickup_date = params.get('pickup_date');
 		}
-		if (params.get('cargo')) {
-			const cargoMap = { light: 'general', heavy: 'b2b', refrigerated: 'cold' };
-			data.cargo_type = cargoMap[params.get('cargo')] || params.get('cargo');
-		}
-		saveData(migrateLegacyRoute(data));
-		populateForm(form, data);
 
-		if (window.SamabarPersianDatetime && document.getElementById('order-pickup-datetime')) {
-			window.SamabarPersianDatetime.init(document.getElementById('order-pickup-datetime'));
-		}
+		saveData(migrateLegacyRoute(data));
+		populateForm(data);
+	}
+
+	function bindFieldSync() {
+		const selectors = [
+			'#order-origin-city',
+			'#order-origin-address',
+			'#order-destination-city',
+			'#order-destination-address',
+			'#order-weight',
+			'#order-dim-length',
+			'#order-dim-width',
+			'#order-dim-height',
+			'#order-description',
+			'#order-full-name',
+			'#order-phone',
+			'#order-company',
+		];
+
+		selectors.forEach(function (selector) {
+			const field = form.querySelector(selector);
+			if (!field) {
+				return;
+			}
+			const handler = function () {
+				syncSummary();
+				if (
+					selector === '#order-origin-city' ||
+					selector === '#order-destination-city' ||
+					selector === '#order-weight'
+				) {
+					scheduleFreightRefresh();
+				}
+				if (selector === '#order-phone' || selector === '#order-full-name' || selector === '#order-company') {
+					persistCustomerSession(collectContactFields());
+				}
+			};
+			field.addEventListener('input', handler);
+			field.addEventListener('change', handler);
+		});
 
 		const pickupInput = form.querySelector('#order-pickup-date');
 		if (pickupInput) {
 			pickupInput.addEventListener('change', function () {
-				mergeData({ pickup_date: pickupInput.value || '' });
-			});
-		}
-
-		initMapStatus();
-		initRouteFields(form);
-		initContactFields(form, data);
-
-		form.addEventListener('submit', function (event) {
-			event.preventDefault();
-			if (!validateRoute(form) || !validateContact(form)) {
-				return;
-			}
-			const stepData = collectStep1Data(form);
-			mergeData(stepData);
-			persistCustomerSession(stepData);
-			window.location.href = stepUrl(2);
-		});
-	}
-
-	function initStep2() {
-		const form = document.getElementById('order-form-step-2');
-		if (!form) {
-			return;
-		}
-
-		const data = migrateLegacyRoute(loadData());
-		if (!hasValidRoute(data) || !hasValidContact(data)) {
-			window.location.href = stepUrl(1);
-			return;
-		}
-
-		populateForm(form, data);
-		initCargoCards(form);
-
-		form.addEventListener('submit', function (event) {
-			event.preventDefault();
-			const weight = form.querySelector('#order-weight')?.value;
-			if (!weight || parseInt(weight, 10) < 1) {
-				window.alert('لطفاً وزن محموله را وارد کنید.');
-				form.querySelector('#order-weight')?.focus();
-				return;
-			}
-			mergeFormFields(form);
-			window.location.href = stepUrl(3);
-		});
-	}
-
-	function initStep3() {
-		const wrapper = document.getElementById('order-form-step-3');
-		if (!wrapper) {
-			return;
-		}
-
-		const data = migrateLegacyRoute(loadData());
-		if (!hasValidRoute(data) || !hasValidContact(data)) {
-			window.location.href = stepUrl(1);
-			return;
-		}
-		if (!data.weight || parseInt(data.weight, 10) < 1) {
-			window.location.href = stepUrl(2);
-			return;
-		}
-
-		const originEl = wrapper.querySelector('[data-review-origin]');
-		const destEl = wrapper.querySelector('[data-review-destination]');
-		const pickupEl = wrapper.querySelector('[data-review-pickup]');
-		const nameEl = wrapper.querySelector('[data-review-name]');
-		const phoneEl = wrapper.querySelector('[data-review-phone]');
-		const cargoEl = wrapper.querySelector('[data-review-cargo]');
-		const weightEl = wrapper.querySelector('[data-review-weight]');
-		const serviceEl = wrapper.querySelector('[data-review-service]');
-		const totalEl = wrapper.querySelector('[data-review-total]');
-
-		if (originEl) originEl.textContent = data.origin || '—';
-		if (destEl) destEl.textContent = data.destination || '—';
-		if (pickupEl) pickupEl.textContent = formatPickupDisplay(data.pickup_date);
-		if (nameEl) nameEl.textContent = data.full_name || '—';
-		if (phoneEl) phoneEl.textContent = data.phone || '—';
-		if (cargoEl) cargoEl.textContent = cargoLabels[data.cargo_type] || data.cargo_type || '—';
-		if (weightEl) {
-			weightEl.textContent = parseInt(data.weight, 10).toLocaleString('fa-IR') + ' کیلوگرم';
-		}
-
-		setReviewRow(wrapper, 'dims', formatDimensions(data));
-		setReviewRow(wrapper, 'description', data.description ? String(data.description).trim() : '');
-		setReviewRow(wrapper, 'company', data.company ? String(data.company).trim() : '');
-
-		function updateService() {
-			const selected = wrapper.querySelector('input[name="service"]:checked');
-			const service = selected ? selected.value : selectService(wrapper, data.service || 'corporate');
-			const price = servicePrices[service] || servicePrices.corporate;
-
-			if (serviceEl) serviceEl.textContent = serviceLabels[service] || service;
-			if (totalEl) totalEl.textContent = formatPrice(price);
-			syncServiceCards(wrapper);
-			mergeData({ service: service, total_price: price });
-		}
-
-		selectService(wrapper, data.service || 'corporate');
-
-		wrapper.querySelectorAll('input[name="service"]').forEach(function (input) {
-			input.addEventListener('change', updateService);
-		});
-		updateService();
-
-		const submitBtn = document.getElementById('order-submit');
-		const success = document.getElementById('order-success');
-		if (submitBtn && success) {
-			submitBtn.addEventListener('click', function () {
-				updateService();
-				if (!hasValidContact(loadData())) {
-					window.alert('اطلاعات تماس ناقص است. لطفاً به مرحله اول برگردید.');
-					window.location.href = stepUrl(1);
-					return;
-				}
-				const payload = loadData();
-				submitBtn.disabled = true;
-				submitBtn.classList.add('is-loading');
-
-				fetch(config.restUrl, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'X-WP-Nonce': config.nonce,
-					},
-					body: JSON.stringify(payload),
-				})
-					.then(function (response) {
-						return response.json().then(function (body) {
-							if (!response.ok) {
-								throw new Error(body.message || 'خطا در ثبت سفارش');
-							}
-							return body;
-						});
-					})
-					.then(function (result) {
-						const payload = loadData();
-						sessionStorage.removeItem(STORAGE_KEY);
-						if (result.order_number && payload.phone) {
-							if (window.samabarCustomer) {
-								window.samabarCustomer.save({
-									phone: payload.phone,
-									full_name: payload.full_name || '',
-									company: payload.company || '',
-								});
-							}
-						}
-						const numberEl = success.querySelector('[data-order-number]');
-						const trackLink = success.querySelector('[data-order-track-link]');
-						const dashboardLink = success.querySelector('[data-order-dashboard-link]');
-						if (numberEl && result.order_number) {
-							numberEl.textContent = 'شماره پیگیری: ' + result.order_number;
-							numberEl.hidden = false;
-						}
-						if (trackLink && result.order_number) {
-							const base = config.trackingUrl || '/peigiry/';
-							const url = new URL(base, window.location.origin);
-							url.searchParams.set('track', result.order_number);
-							trackLink.href = url.toString();
-						}
-						if (dashboardLink && payload.phone) {
-							const dashBase = config.dashboardUrl || '/panel/';
-							const dashUrl = new URL(dashBase, window.location.origin);
-							dashUrl.searchParams.set('phone', payload.phone);
-							dashboardLink.href = dashUrl.toString();
-						}
-						wrapper.hidden = true;
-						document.querySelector('.order-steps')?.setAttribute('hidden', '');
-						success.hidden = false;
-					})
-					.catch(function (err) {
-						submitBtn.disabled = false;
-						submitBtn.classList.remove('is-loading');
-						window.alert(err.message || 'ثبت سفارش انجام نشد. لطفاً دوباره تلاش کنید.');
-					});
+				syncSummary();
 			});
 		}
 	}
 
-	if (step === 1) {
-		initStep1();
-	} else if (step === 2) {
-		initStep2();
-	} else if (step === 3) {
-		initStep3();
+	initFromQuery();
+
+	if (window.SamabarPersianDatetime && document.getElementById('order-pickup-datetime')) {
+		window.SamabarPersianDatetime.init(document.getElementById('order-pickup-datetime'));
 	}
+
+	bindFieldSync();
+	syncSummary();
+	refreshFreight();
+
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+
+		const weight = form.querySelector('#order-weight')?.value;
+		if (!weight || parseInt(weight, 10) < 1) {
+			window.alert('لطفاً وزن محموله را وارد کنید.');
+			form.querySelector('#order-weight')?.focus();
+			return;
+		}
+
+		if (!validateRoute() || !validateContact()) {
+			return;
+		}
+
+		mergeData(collectFormData());
+		persistCustomerSession(collectContactFields());
+		submitOrder();
+	});
 })();

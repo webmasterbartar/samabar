@@ -171,6 +171,10 @@
 	background-position: left 1rem center;
 }
 
+.pricing-form__select:invalid {
+	color: var(--color-outline);
+}
+
 .pricing-form__actions {
 	display: flex;
 	justify-content: flex-end;
@@ -208,10 +212,9 @@
 	box-shadow: var(--shadow-lg);
 }
 
-.pricing-result.is-empty .pricing-result__price-range,
 .pricing-result.is-empty .pricing-result__meta,
 .pricing-result.is-empty .pricing-result__actions {
-	opacity: 0.5;
+	opacity: 0.55;
 }
 
 .pricing-result__head {
@@ -240,9 +243,18 @@
 }
 
 .pricing-result__label {
+	display: block;
+	margin-top: var(--space-md);
 	font-size: var(--font-size-label-sm);
 	line-height: var(--line-height-label-sm);
 	color: var(--color-primary-fixed-dim);
+}
+
+.pricing-result__price-mask {
+	display: inline-block;
+	letter-spacing: 0.35em;
+	font-weight: 600;
+	opacity: 0.92;
 }
 
 .pricing-result__price-range {

@@ -11,6 +11,7 @@ get_header();
 $home_url     = home_url( '/' );
 $pricing_url  = samabar_get_pricing_url();
 $order_url    = samabar_get_order_url();
+$hub_city     = samabar_get_hub_city();
 ?>
 
 <main id="primary" class="site-main site-main--pricing">
@@ -36,31 +37,57 @@ $order_url    = samabar_get_order_url();
 						اطلاعات محموله
 					</h2>
 					<form class="pricing-form" id="pricing-form" action="#" method="get">
+						<p class="route-notice" role="note">
+							<span class="material-symbols-outlined icon" aria-hidden="true">info</span>
+							<span>
+								<?php
+								printf(
+									/* translators: %s: hub city name */
+									esc_html__( 'کرایه برای بارگیری از %1$s به سراسر کشور، یا از هر شهر به %1$s محاسبه می‌شود. یک طرف مسیر باید %1$s باشد.', 'samabar' ),
+									esc_html( $hub_city )
+								);
+								?>
+							</span>
+						</p>
 						<div class="pricing-form__row pricing-form__row--2">
 							<div class="pricing-form__field">
 								<label class="pricing-form__label" for="pricing-origin">مبدا</label>
 								<div class="pricing-form__input-wrap">
 									<span class="material-symbols-outlined icon">location_on</span>
-									<input class="pricing-form__input" id="pricing-origin" name="origin" type="text" placeholder="شهر مبدا..." required>
+									<?php
+									echo samabar_get_city_select_markup(
+										array(
+											'id'       => 'pricing-origin',
+											'name'     => 'origin',
+											'class'    => 'pricing-form__input pricing-form__select',
+											'required' => true,
+										)
+									);
+									?>
 								</div>
 							</div>
 							<div class="pricing-form__field">
 								<label class="pricing-form__label" for="pricing-destination">مقصد</label>
 								<div class="pricing-form__input-wrap">
 									<span class="material-symbols-outlined icon">flag</span>
-									<input class="pricing-form__input" id="pricing-destination" name="destination" type="text" placeholder="شهر مقصد..." required>
+									<?php
+									echo samabar_get_city_select_markup(
+										array(
+											'id'       => 'pricing-destination',
+											'name'     => 'destination',
+											'class'    => 'pricing-form__input pricing-form__select',
+											'required' => true,
+										)
+									);
+									?>
 								</div>
 							</div>
 						</div>
-						<div class="pricing-form__row pricing-form__row--3">
-							<div class="pricing-form__field">
-								<label class="pricing-form__label" for="pricing-cargo">نوع بار</label>
-								<select class="pricing-form__input pricing-form__select" id="pricing-cargo" name="cargo">
-									<option value="industrial">صنعتی</option>
-									<option value="food">مواد غذایی</option>
-									<option value="furniture">اثاثیه منزل</option>
-								</select>
-							</div>
+						<p class="route-notice route-notice--error pricing-form__alert" data-pricing-form-error hidden role="alert">
+							<span class="material-symbols-outlined icon" aria-hidden="true">error</span>
+							<span data-pricing-form-error-text></span>
+						</p>
+						<div class="pricing-form__row pricing-form__row--2">
 							<div class="pricing-form__field">
 								<label class="pricing-form__label" for="pricing-weight">وزن تقریبی (کیلوگرم)</label>
 								<input class="pricing-form__input" id="pricing-weight" name="weight" type="number" min="1" placeholder="مثال: 500" value="500">
@@ -80,31 +107,32 @@ $order_url    = samabar_get_order_url();
 					</form>
 				</div>
 
-				<aside class="pricing-result" id="pricing-result" aria-live="polite">
+				<aside class="pricing-result is-empty" id="pricing-result" aria-live="polite">
 					<div>
 						<div class="pricing-result__head">
-							<h3 class="pricing-result__title text-headline-md">قیمت تقریبی</h3>
+							<h3 class="pricing-result__title text-headline-md">کرایه حمل</h3>
 							<span class="material-symbols-outlined icon icon--filled">payments</span>
 						</div>
 						<div class="pricing-result__body">
-							<span class="pricing-result__label">محدوده قیمت</span>
+							<span class="pricing-result__label">مبلغ کرایه</span>
 							<div class="pricing-result__price-range" data-price-range>
-								۴.۵ <small>تا</small> ۵.۲ <span class="pricing-result__price-unit">میلیون تومان</span>
+								<span class="pricing-result__price-mask" aria-hidden="true">＊ ＊ ＊ ＊ ＊</span>
+								<span class="pricing-result__price-unit">تومان</span>
 							</div>
 							<div class="pricing-result__meta">
 								<div class="pricing-result__meta-item">
 									<span class="material-symbols-outlined icon icon--filled">schedule</span>
-									<span data-delivery>زمان تخمینی تحویل: ۲ تا ۳ روز کاری</span>
+									<span data-delivery>—</span>
 								</div>
 								<div class="pricing-result__meta-item">
 									<span class="material-symbols-outlined icon icon--filled">verified</span>
-									<span data-service>سرویس پیشنهادی: عادی</span>
+									<span data-service>—</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="pricing-result__actions">
-						<a class="btn btn--on-primary btn--lg" href="<?php echo esc_url( $order_url ); ?>">ثبت سفارش با این قیمت</a>
+						<a class="btn btn--on-primary btn--lg" href="<?php echo esc_url( $order_url ); ?>" data-pricing-order-link>ثبت سفارش با این قیمت</a>
 						<button class="btn btn--ghost-light btn--lg" type="button" data-reset>تغییر اطلاعات</button>
 					</div>
 				</aside>

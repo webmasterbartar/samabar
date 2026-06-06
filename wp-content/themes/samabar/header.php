@@ -61,7 +61,6 @@ $is_blog       = is_page_template( 'page-blog.php' ) || is_page( 'blog' ) || is_
 	<div class="site-header__main">
 		<div class="container site-header__inner">
 			<a class="site-header__brand" href="<?php echo esc_url( $home_url ); ?>">
-				<img alt="<?php esc_attr_e( 'لوگوی سما بار', 'samabar' ); ?>" class="site-header__logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVxPFKpxa-oit_M8ORyPPLhlwbvOSbAPkUYGCoPPD-ATgcVle1DtnAcu5VgdrMd_kHqTY1sTT6lyQuXbhhWWBF750hLz_ZCtJ0YR31g27ACCh-ao3wlSJQCc0wwDLU767_RJLOwfPhNWxufH-546ZlLJzSy_odif-tSiRnUCyWkDWyROaB9UfoKrdAJXHp6AF4xjjVZ-tjY1lXWE--INtdq_fuBILSSepRY8AdPJkkw4IwneAB9lIbtWyMRRi6qdTlsJXKjGdzXI">
 				<span class="site-header__brand-text">
 					<span class="site-header__title">سما بار</span>
 					<span class="site-header__tagline">حمل بار هوشمند</span>

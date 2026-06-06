@@ -1,0 +1,348 @@
+{
+	"meta": {
+		"title": "نرخنامه سال ۱۴۰۳",
+		"effective_date": "1403/03/24",
+		"base_price_month": "خرداد ۱۴۰۳",
+		"hub_city": "بندرعباس",
+		"page": 1,
+		"rows_from": 1,
+		"rows_to": 33,
+		"source_file": "01.png",
+		"parsed_at": "2026-06-01",
+		"notes": [
+			"پایین برگه: 30,140,000 × 17.5% — معنی در انتظار تایید"
+		]
+	},
+	"routes": [
+		{
+			"row": 1,
+			"destination": "ابرکوه (ابرقو)",
+			"destination_primary": "ابرکوه",
+			"destination_alias": "ابرقو",
+			"distance_km": 763,
+			"base_rial": 325600000,
+			"per_ton_rial": 14800000,
+			"truck_15t_rial": 222000000
+		},
+		{
+			"row": 2,
+			"destination": "ابهر",
+			"destination_primary": "ابهر",
+			"destination_alias": null,
+			"distance_km": 1456,
+			"base_rial": 501600000,
+			"per_ton_rial": 22800000,
+			"truck_15t_rial": 342000000
+		},
+		{
+			"row": 3,
+			"destination": "اراک",
+			"destination_primary": "اراک",
+			"destination_alias": null,
+			"distance_km": 1269,
+			"base_rial": 430700000,
+			"per_ton_rial": 19600000,
+			"truck_15t_rial": 294000000
+		},
+		{
+			"row": 4,
+			"destination": "اردبیل",
+			"destination_primary": "اردبیل",
+			"destination_alias": null,
+			"distance_km": 1814,
+			"base_rial": 619600000,
+			"per_ton_rial": 28200000,
+			"truck_15t_rial": 423000000
+		},
+		{
+			"row": 5,
+			"destination": "اردستان",
+			"destination_primary": "اردستان",
+			"destination_alias": null,
+			"distance_km": 915,
+			"base_rial": 363700000,
+			"per_ton_rial": 16500000,
+			"truck_15t_rial": 247500000
+		},
+		{
+			"row": 6,
+			"destination": "اردکان (یزد)",
+			"destination_primary": "اردکان",
+			"destination_alias": "یزد",
+			"distance_km": 712,
+			"base_rial": 309500000,
+			"per_ton_rial": 14100000,
+			"truck_15t_rial": 211500000
+		},
+		{
+			"row": 7,
+			"destination": "ارسنجان",
+			"destination_primary": "ارسنجان",
+			"destination_alias": null,
+			"distance_km": 618,
+			"base_rial": 312000000,
+			"per_ton_rial": 14200000,
+			"truck_15t_rial": 213000000
+		},
+		{
+			"row": 8,
+			"destination": "ارومیه",
+			"destination_primary": "ارومیه",
+			"destination_alias": null,
+			"distance_km": 1987,
+			"base_rial": 659900000,
+			"per_ton_rial": 30000000,
+			"truck_15t_rial": 450000000
+		},
+		{
+			"row": 9,
+			"destination": "ازنا",
+			"destination_primary": "ازنا",
+			"destination_alias": null,
+			"distance_km": 1210,
+			"base_rial": 426800000,
+			"per_ton_rial": 19400000,
+			"truck_15t_rial": 291000000
+		},
+		{
+			"row": 10,
+			"destination": "اسفراین",
+			"destination_primary": "اسفراین",
+			"destination_alias": null,
+			"distance_km": 1530,
+			"base_rial": 545700000,
+			"per_ton_rial": 24800000,
+			"truck_15t_rial": 372000000
+		},
+		{
+			"row": 11,
+			"destination": "اسلام آباد غرب",
+			"destination_primary": "اسلام آباد غرب",
+			"destination_alias": null,
+			"distance_km": 1560,
+			"base_rial": 560400000,
+			"per_ton_rial": 25500000,
+			"truck_15t_rial": 382500000
+		},
+		{
+			"row": 12,
+			"destination": "اسلامشهر",
+			"destination_primary": "اسلامشهر",
+			"destination_alias": null,
+			"distance_km": 1267,
+			"base_rial": 429800000,
+			"per_ton_rial": 19500000,
+			"truck_15t_rial": 292500000
+		},
+		{
+			"row": 13,
+			"destination": "اشترجان",
+			"destination_primary": "اشترجان",
+			"destination_alias": null,
+			"distance_km": 938,
+			"base_rial": 383800000,
+			"per_ton_rial": 17400000,
+			"truck_15t_rial": 261000000
+		},
+		{
+			"row": 14,
+			"destination": "اشتهارد",
+			"destination_primary": "اشتهارد",
+			"destination_alias": null,
+			"distance_km": 1343,
+			"base_rial": 457100000,
+			"per_ton_rial": 20800000,
+			"truck_15t_rial": 312000000
+		},
+		{
+			"row": 15,
+			"destination": "اشکذر",
+			"destination_primary": "اشکذر",
+			"destination_alias": null,
+			"distance_km": 680,
+			"base_rial": 304700000,
+			"per_ton_rial": 13900000,
+			"truck_15t_rial": 208500000
+		},
+		{
+			"row": 16,
+			"destination": "اشنویه",
+			"destination_primary": "اشنویه",
+			"destination_alias": null,
+			"distance_km": 1941,
+			"base_rial": 659900000,
+			"per_ton_rial": 30000000,
+			"truck_15t_rial": 450000000
+		},
+		{
+			"row": 17,
+			"destination": "اصفهان",
+			"destination_primary": "اصفهان",
+			"destination_alias": null,
+			"distance_km": 971,
+			"base_rial": 383800000,
+			"per_ton_rial": 17400000,
+			"truck_15t_rial": 261000000
+		},
+		{
+			"row": 18,
+			"destination": "اقلید",
+			"destination_primary": "اقلید",
+			"destination_alias": null,
+			"distance_km": 721,
+			"base_rial": 301400000,
+			"per_ton_rial": 13700000,
+			"truck_15t_rial": 205500000
+		},
+		{
+			"row": 19,
+			"destination": "الیگودرز",
+			"destination_primary": "الیگودرز",
+			"destination_alias": null,
+			"distance_km": 1201,
+			"base_rial": 412900000,
+			"per_ton_rial": 18800000,
+			"truck_15t_rial": 282000000
+		},
+		{
+			"row": 20,
+			"destination": "امیدیه (خوزستان)",
+			"destination_primary": "امیدیه",
+			"destination_alias": "خوزستان",
+			"distance_km": 989,
+			"base_rial": 416500000,
+			"per_ton_rial": 18900000,
+			"truck_15t_rial": 283500000
+		},
+		{
+			"row": 21,
+			"destination": "امیرآباد بهشهر",
+			"destination_primary": "امیرآباد بهشهر",
+			"destination_alias": null,
+			"distance_km": 1585,
+			"base_rial": 551400000,
+			"per_ton_rial": 25100000,
+			"truck_15t_rial": 376500000
+		},
+		{
+			"row": 22,
+			"destination": "انار",
+			"destination_primary": "انار",
+			"destination_alias": null,
+			"distance_km": 508,
+			"base_rial": 266800000,
+			"per_ton_rial": 12100000,
+			"truck_15t_rial": 181500000
+		},
+		{
+			"row": 23,
+			"destination": "اندیمشک",
+			"destination_primary": "اندیمشک",
+			"destination_alias": null,
+			"distance_km": 1269,
+			"base_rial": 433900000,
+			"per_ton_rial": 19700000,
+			"truck_15t_rial": 295500000
+		},
+		{
+			"row": 24,
+			"destination": "اهر",
+			"destination_primary": "اهر",
+			"destination_alias": null,
+			"distance_km": 1900,
+			"base_rial": 619600000,
+			"per_ton_rial": 28200000,
+			"truck_15t_rial": 423000000
+		},
+		{
+			"row": 25,
+			"destination": "اهواز",
+			"destination_primary": "اهواز",
+			"destination_alias": null,
+			"distance_km": 1109,
+			"base_rial": 424100000,
+			"per_ton_rial": 19300000,
+			"truck_15t_rial": 289500000
+		},
+		{
+			"row": 26,
+			"destination": "ایذه",
+			"destination_primary": "ایذه",
+			"destination_alias": null,
+			"distance_km": 1125,
+			"base_rial": 424100000,
+			"per_ton_rial": 19300000,
+			"truck_15t_rial": 289500000
+		},
+		{
+			"row": 27,
+			"destination": "ایرانشهر",
+			"destination_primary": "ایرانشهر",
+			"destination_alias": null,
+			"distance_km": 566,
+			"base_rial": 404700000,
+			"per_ton_rial": 18400000,
+			"truck_15t_rial": 276000000
+		},
+		{
+			"row": 28,
+			"destination": "ایلام",
+			"destination_primary": "ایلام",
+			"destination_alias": null,
+			"distance_km": 1583,
+			"base_rial": 566700000,
+			"per_ton_rial": 25800000,
+			"truck_15t_rial": 387000000
+		},
+		{
+			"row": 29,
+			"destination": "اینچه برون",
+			"destination_primary": "اینچه برون",
+			"destination_alias": null,
+			"distance_km": 1592,
+			"base_rial": 566700000,
+			"per_ton_rial": 25800000,
+			"truck_15t_rial": 387000000
+		},
+		{
+			"row": 30,
+			"destination": "ایوان (ایلام غرب)",
+			"destination_primary": "ایوان",
+			"destination_alias": "ایلام غرب",
+			"distance_km": 1607,
+			"base_rial": 565300000,
+			"per_ton_rial": 25700000,
+			"truck_15t_rial": 385500000
+		},
+		{
+			"row": 31,
+			"destination": "ایوانکی",
+			"destination_primary": "ایوانکی",
+			"destination_alias": null,
+			"distance_km": 1336,
+			"base_rial": 432500000,
+			"per_ton_rial": 19700000,
+			"truck_15t_rial": 295500000
+		},
+		{
+			"row": 32,
+			"destination": "آبادان",
+			"destination_primary": "آبادان",
+			"destination_alias": null,
+			"distance_km": 1150,
+			"base_rial": 416500000,
+			"per_ton_rial": 18900000,
+			"truck_15t_rial": 283500000
+		},
+		{
+			"row": 33,
+			"destination": "آباده",
+			"destination_primary": "آباده",
+			"destination_alias": null,
+			"distance_km": 722,
+			"base_rial": 301400000,
+			"per_ton_rial": 13700000,
+			"truck_15t_rial": 205500000
+		}
+	]
+}

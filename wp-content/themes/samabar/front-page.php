@@ -10,6 +10,11 @@ get_header();
 $services_url = samabar_get_services_url();
 $pricing_url  = samabar_get_pricing_url();
 $order_url    = samabar_get_order_url();
+$about_url    = samabar_get_about_url();
+$contact_url  = samabar_get_contact_url();
+$projects     = samabar_get_home_project_gallery();
+$highlights   = samabar_get_home_about_highlights();
+$hub_city     = samabar_get_hub_city();
 ?>
 
 <main id="primary" class="site-main site-main--front">
@@ -29,26 +34,53 @@ $order_url    = samabar_get_order_url();
 				<a class="btn btn--outline btn--lg" href="<?php echo esc_url( $pricing_url ); ?>">استعلام قیمت</a>
 			</div>
 
-			<form class="hero-form" id="hero-form" action="<?php echo esc_url( $order_url ); ?>" method="get">
-				<div class="hero-form__field">
-					<label class="hero-form__label" for="hero-origin">مبدا</label>
-					<input class="hero-form__input" id="hero-origin" name="origin" placeholder="شهر یا آدرس مبدا" type="text">
-				</div>
-				<div class="hero-form__field">
-					<label class="hero-form__label" for="hero-destination">مقصد</label>
-					<input class="hero-form__input" id="hero-destination" name="destination" placeholder="شهر یا آدرس مقصد" type="text">
-				</div>
-				<div class="hero-form__field hero-form__field--select">
-					<label class="hero-form__label" for="hero-cargo">نوع بار</label>
-					<select class="hero-form__input hero-form__select" id="hero-cargo" name="cargo" required>
-						<option disabled selected value="">انتخاب کنید</option>
-						<option value="light">سبک</option>
-						<option value="heavy">سنگین</option>
-						<option value="refrigerated">یخچال‌دار</option>
-					</select>
-				</div>
-				<button class="btn btn--primary hero-form__submit" type="submit">ادامه</button>
-			</form>
+			<div class="hero-form-wrap">
+				<form class="hero-form" id="hero-form" action="<?php echo esc_url( $order_url ); ?>" method="get">
+					<div class="hero-form__field hero-form__field--select">
+						<label class="hero-form__label" for="hero-origin">مبدا</label>
+						<?php
+						echo samabar_get_city_select_markup(
+							array(
+								'id'       => 'hero-origin',
+								'name'     => 'origin',
+								'class'    => 'hero-form__input hero-form__select',
+								'required' => true,
+							)
+						);
+						?>
+					</div>
+					<div class="hero-form__field hero-form__field--select">
+						<label class="hero-form__label" for="hero-destination">مقصد</label>
+						<?php
+						echo samabar_get_city_select_markup(
+							array(
+								'id'       => 'hero-destination',
+								'name'     => 'destination',
+								'class'    => 'hero-form__input hero-form__select',
+								'required' => true,
+							)
+						);
+						?>
+					</div>
+					<button class="btn btn--primary hero-form__submit" type="submit">ادامه</button>
+				</form>
+				<p class="route-notice route-notice--error hero-form__route-error" data-hero-route-error hidden role="alert">
+					<span class="material-symbols-outlined icon" aria-hidden="true">error</span>
+					<span data-hero-route-error-text></span>
+				</p>
+				<p class="hero-form__route-hint">
+					<span class="material-symbols-outlined icon" aria-hidden="true">info</span>
+					<?php
+					printf(
+						/* translators: %s: hub city name */
+						esc_html__( 'از %s به همه‌جا، یا از هر شهر به %s — یک طرف مسیر باید %s باشد', 'samabar' ),
+						esc_html( $hub_city ),
+						esc_html( $hub_city ),
+						esc_html( $hub_city )
+					);
+					?>
+				</p>
+			</div>
 		</div>
 	</section>
 
@@ -74,6 +106,80 @@ $order_url    = samabar_get_order_url();
 				<span class="material-symbols-outlined stats__icon icon icon--lg icon--filled">sentiment_satisfied</span>
 				<span class="stats__value" dir="ltr">98%</span>
 				<span class="stats__label">رضایت مشتری</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Samabar -->
+	<section class="section section--tint home-about" id="about-samabar">
+		<div class="container home-about__grid">
+			<div class="home-about__content">
+				<span class="home-about__eyebrow">درباره سما بار</span>
+				<h2 class="home-about__title text-headline-lg">همراه مطمئن کسب‌وکارها در حمل و نقل جاده‌ای</h2>
+				<p class="home-about__lead text-body-lg">
+					سما بار با تکیه بر تجربه عملیاتی و زیرساخت دیجیتال، فرایند حمل بار را از ثبت سفارش تا تحویل نهایی یکپارچه کرده است. ما برای شرکت‌ها، کارخانه‌ها و کسب‌وکارهایی که به زمان‌بندی دقیق و شفافیت هزینه نیاز دارند، راهکار ارائه می‌دهیم.
+				</p>
+				<p class="home-about__text text-body-md">
+					از حمل درون‌شهری با وانت و خاور تا ارسال برون‌شهری با ناوگان سنگین، تیم سما بار در کنار شماست تا بار با امنیت، بیمه و پشتیبانی حرفه‌ای به مقصد برسد. دفتر مرکزی ما در بندرعباس است و خدمات‌رسانی در مسیرهای سراسری کشور انجام می‌شود.
+				</p>
+				<ul class="home-about__highlights">
+					<?php foreach ( $highlights as $item ) : ?>
+						<li class="home-about__highlight">
+							<span class="material-symbols-outlined icon" aria-hidden="true"><?php echo esc_html( $item['icon'] ); ?></span>
+							<span><?php echo esc_html( $item['label'] ); ?></span>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+				<div class="home-about__actions">
+					<a class="btn btn--secondary" href="<?php echo esc_url( $about_url ); ?>">بیشتر درباره ما</a>
+					<a class="btn btn--outline" href="<?php echo esc_url( $contact_url ); ?>">تماس با کارشناسان</a>
+				</div>
+			</div>
+			<div class="home-about__aside">
+				<div class="home-about__stat-card">
+					<span class="material-symbols-outlined icon icon--filled">history</span>
+					<strong>+۱۰ سال</strong>
+					<span>تجربه عملیاتی در حمل بار</span>
+				</div>
+				<div class="home-about__stat-card">
+					<span class="material-symbols-outlined icon icon--filled">route</span>
+					<strong>سراسر ایران</strong>
+					<span>پوشش مسیرهای درون‌شهری و بین‌شهری</span>
+				</div>
+				<div class="home-about__stat-card home-about__stat-card--accent">
+					<span class="material-symbols-outlined icon icon--filled">handshake</span>
+					<strong>همکاری B2B</strong>
+					<span>قراردادهای سازمانی و ارسال دوره‌ای</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Project Gallery -->
+	<section class="section home-projects" id="projects">
+		<div class="container">
+			<div class="section-header">
+				<h2 class="section-title">نمونه پروژه‌های اجراشده</h2>
+				<p class="section-subtitle">بخشی از پروژه‌های موفق سما بار در حوزه حمل، بارگیری و لجستیک</p>
+			</div>
+			<div class="home-projects__grid">
+				<?php foreach ( $projects as $project ) : ?>
+					<figure class="home-projects__item">
+						<div class="home-projects__media">
+							<img
+								src="<?php echo esc_url( samabar_get_theme_asset_url( $project['file'] ) ); ?>"
+								alt="<?php echo esc_attr( $project['title'] ); ?>"
+								loading="lazy"
+								width="640"
+								height="480"
+							>
+						</div>
+						<figcaption class="home-projects__caption">
+							<strong class="home-projects__title"><?php echo esc_html( $project['title'] ); ?></strong>
+							<span class="home-projects__desc"><?php echo esc_html( $project['caption'] ); ?></span>
+						</figcaption>
+					</figure>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
@@ -212,20 +318,6 @@ $order_url    = samabar_get_order_url();
 						<span class="badge-card__title">تضمین کیفیت</span>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<section class="section cta-section">
-		<div class="container">
-			<div class="cta-section__inner">
-				<h2 class="cta-section__title">همین الان بار خود را ثبت کنید</h2>
-				<p class="cta-section__text">با وارد کردن شماره تماس، کارشناسان ما در سریع‌ترین زمان با شما تماس می‌گیرند.</p>
-				<form class="cta-section__form" action="#" method="get">
-					<input class="form-input form-input--ltr" placeholder="0912 345 6789" type="tel">
-					<button class="btn btn--secondary btn--nowrap" type="submit">ثبت درخواست</button>
-				</form>
 			</div>
 		</div>
 	</section>

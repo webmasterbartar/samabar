@@ -94,7 +94,7 @@ function samabar_admin_pricing_render() {
 				</div>
 				<div>
 					<h1 class="samabar-admin__title">تنظیم قیمت سرویس‌ها</h1>
-					<p class="samabar-admin__subtitle">قیمت‌های نمایش‌داده‌شده در مرحله ۳ ثبت سفارش و هنگام ثبت نهایی</p>
+					<p class="samabar-admin__subtitle">قیمت‌های نمایش‌داده‌شده هنگام ثبت سفارش</p>
 				</div>
 			</div>
 		</header>
@@ -131,7 +131,7 @@ function samabar_admin_pricing_render() {
 								<span class="samabar-pricing-card__unit">﷼</span>
 							</div>
 							<span class="samabar-pricing-card__preview">
-								نمایش: <?php echo esc_html( samabar_format_price( $prices[ $key ] ) ); ?>
+								نمایش برای مشتری: <?php echo esc_html( samabar_format_price( $prices[ $key ] ) ); ?>
 							</span>
 						</label>
 					</div>
@@ -144,7 +144,7 @@ function samabar_admin_pricing_render() {
 			</div>
 		</form>
 
-		<p class="samabar-pricing__hint">مبالغ به <strong>ریال</strong> وارد شوند. پس از ذخیره، فرانت‌اند سایت بلافاصله قیمت جدید را نشان می‌دهد.</p>
+		<p class="samabar-pricing__hint">مبالغ سرویس را به <strong>ریال</strong> وارد کنید. در سایت برای مشتری به <strong>تومان</strong> نمایش داده می‌شود.</p>
 	</div>
 	<?php
 }
